@@ -1,0 +1,1 @@
+# sheric's hyprland config
