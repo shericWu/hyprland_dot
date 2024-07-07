@@ -1,0 +1,27 @@
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=10000
+SAVEHIST=10000
+setopt notify
+unsetopt beep
+bindkey -v
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/sheric/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+setopt prompt_subst
+zstyle ':vcs_info:git:*' formats '()'
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias chedit='chezmoi edit --apply'
+
+PROMPT='%F{6}%n:[%f%F{15}%~%f%F{6}]${vcs_info_msg_0_} %f '
+RPROMPT=' %F{1}(%?)%f %F{15}%*%f'
