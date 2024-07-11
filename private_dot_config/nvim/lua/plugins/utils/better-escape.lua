@@ -15,9 +15,6 @@ return {
                 t = {
                     j = { j = "<Esc>" }
                 },
-                v = {
-                    j = { j = "<Esc>" }
-                },
                 s = {
                     j = { j = "<Esc>" }
                 },

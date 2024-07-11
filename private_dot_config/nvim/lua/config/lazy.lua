@@ -29,7 +29,9 @@ vim.g.maplocalleader = "\\"
 require("lazy").setup({
     spec = {
         -- import your plugins
-        { import = "plugins" },
+        { import = "plugins.looks" },
+        { import = "plugins.lsp" },
+        { import = "plugins.utils" },
     },
     -- colorscheme that will be used when installing plugins.
     install = {
@@ -44,7 +46,7 @@ require("lazy").setup({
         backdrop = 40,
     },
     -- automatically check for plugin updates
-    checker = { 
+    checker = {
         enabled = true
     },
 })

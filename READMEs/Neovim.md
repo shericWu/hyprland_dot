@@ -14,5 +14,12 @@ Note that `lazy.nvim` and `LazyVim` are different.
 
 ## treesitter
 ```sh
-$ pacman -S tree-sitter-cli nodejs
+$ pacman -S tree-sitter-cli nodejs npm
 ```
+
+## lsp
+| language | lsp |
+|:-:|:-:|
+| c, c++ | clangd |
+| lua | lua-language-server |
+| markdown | markdown-oxide, marksman |
