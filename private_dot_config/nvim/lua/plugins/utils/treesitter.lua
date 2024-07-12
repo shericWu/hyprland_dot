@@ -65,10 +65,10 @@ return {
                 incremental_selection = {
                     enable = true,
                     keymaps = {
-                        init_selection = "<Leader>vv",
-                        node_incremental = "<Leader>vi",
-                        node_decremental = "<Leader>vd",
-                        scope_incremental = "<Leader>vs"
+                        init_selection = "<leader>vv",
+                        node_incremental = "<leader>vi",
+                        node_decremental = "<leader>vd",
+                        scope_incremental = "<leader>vs"
                     }
                 },
                 textobjects = {

@@ -56,6 +56,14 @@ return {
                     scope_color = "surface2",
                     colored_indent_levels = false,
                 },
+                nvimtree = true,
+                colorful_winsep = {
+                    enabled = true,
+                    color = "lavender",
+                },
+                aerial = true,
+                notify = true,
+                noice = true,
             },
         })
 

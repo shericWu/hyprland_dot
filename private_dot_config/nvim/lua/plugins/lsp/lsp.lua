@@ -30,6 +30,11 @@ return {
 
         config = function()
             require("lspconfig.ui.windows").default_options.border = "rounded"
+			vim.diagnostic.config({
+				virtual_text = false,
+				signs = true,
+				severity_sort = true,
+			})
         end
     },
     {
@@ -42,7 +47,12 @@ return {
                     border = "rounded",
                     title = false,
                     kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
-                }
+                },
+				lightbulb = {
+					enable = true,
+					sign = false,
+					virtual_text = true,
+				},
             })
         end,
     },

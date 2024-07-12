@@ -26,25 +26,11 @@ return {
             -- override the label used to display some keys
             ["<space>"] = "<spc>",
         },
-        motions = {
-            count = true,
-        },
-        icons = {
-            breadcrumb = "»",
-            separator = "➜",
-            group = "+",
-        },
-        popup_mappings = {
-            scroll_down = "<c-d>",
-            scroll_up = "<c-u>",
-        },
         window = {
             border = "single",
             position = "bottom",
             margin = { 1, 0, 1, 0 },
             padding = { 0, 0, 0, 0 },
-            winblend = 0,
-            zindex = 1000,
         },
         layout = {
             height = { min = 1, max = 6 },
@@ -53,23 +39,5 @@ return {
             align = "right",
         },
         ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
-        hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "^:", "^ ", "^call ", "^lua " },
-        show_help = true,
-        show_keys = true,
-        triggers = "auto",
-        -- triggers = {"<leader>"} -- or specify a list manually
-        -- list of triggers, where WhichKey should not wait for timeoutlen and show immediately
-        triggers_nowait = {
-            -- marks
-            "`",
-            "'",
-            "g`",
-            "g'",
-            -- registers
-            '"',
-            "<c-r>",
-            -- spelling
-            "z=",
-        },
     }
 }

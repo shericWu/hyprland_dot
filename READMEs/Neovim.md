@@ -1,4 +1,13 @@
 # Neovim
+
+<!--toc:start-->
+- [Neovim](#neovim)
+  - [lazy.nvim](#lazynvim)
+  - [Required system packages](#required-system-packages)
+  - [lsp](#lsp)
+  - [TODO](#todo)
+<!--toc:end-->
+
 ## lazy.nvim
 See [Getting Started](https://lazy.folke.io/).
 Note that `lazy.nvim` and `LazyVim` are different.
@@ -12,9 +21,9 @@ Note that `lazy.nvim` and `LazyVim` are different.
 :checkhealth lazy  # install luarocks if needed
 ```
 
-## treesitter
+## Required system packages
 ```sh
-$ pacman -S tree-sitter-cli nodejs npm
+$ pacman -S tree-sitter-cli nodejs npm ripgrep fd make git-delta wget
 ```
 
 ## lsp
@@ -23,3 +32,8 @@ $ pacman -S tree-sitter-cli nodejs npm
 | c, c++ | clangd |
 | lua | lua-language-server |
 | markdown | markdown-oxide, marksman |
+
+## TODO
+- lsp settings
+- nvim-cmp
+- dap (and telescope pluging)

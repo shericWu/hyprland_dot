@@ -39,3 +39,8 @@ vim.opt.sidescrolloff = 8
 vim.opt.timeout = true
 vim.opt.timeoutlen = 200  -- set the window for key pressed
 vim.opt.clipboard = "unnamedplus"  -- use register '+' for system clipboard
+vim.opt.mouse = "a"
+
+-- for nvim-tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1

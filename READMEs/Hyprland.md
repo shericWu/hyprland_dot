@@ -194,6 +194,12 @@ $ pacman -S cliphist
 # exec-once = wl-paste --type image --watch cliphist store
 # bind = Ma
 ```
+
+## Discord client
+```sh
+$ yay -S vesktop
+```
+
 ## Looks
 ### Waybar
 See [Waybar](https://github.com/Alexays/Waybar).
