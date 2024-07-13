@@ -16,6 +16,7 @@ return {
                 "lazy",
                 "mason",
                 "notify",
+                "NvimTree",
             }
         },
     }
