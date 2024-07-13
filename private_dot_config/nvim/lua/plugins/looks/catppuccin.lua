@@ -46,24 +46,26 @@ return {
                 },
 
                 -- utils
-                treesitter = true,
-                which_key = true,
+                aerial = true,
                 markdown = true,
+                nvimtree = true,
+                treesitter = true,
+                telescope = { enabled = true },
+                which_key = true,
 
                 -- looks
+                colorful_winsep = {
+                    enabled = true,
+                    color = "lavender",
+                },
+                dashboard = true,
                 indent_blankline = {
                     enabled = true,
                     scope_color = "surface2",
                     colored_indent_levels = false,
                 },
-                nvimtree = true,
-                colorful_winsep = {
-                    enabled = true,
-                    color = "lavender",
-                },
-                aerial = true,
-                notify = true,
                 noice = true,
+                notify = true,
             },
         })
 

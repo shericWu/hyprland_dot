@@ -1,45 +1,42 @@
 local whichkey = require("which-key")
 local notify = require("notify")
 
-whichkey.register({
-    ["<leader>f"] = {
-        name = "+find",
-        s = { "<cmd>NvimTreeToggle<CR>", "File system tree" },
-        f = { "<cmd>Telescope find_files<CR>", "File names" },
-        g = { "<cmd>Telescope live_grep<CR>", "Live grep" },
-        r = { "<cmd>Telescope registers<CR>", "Registers" },
-        k = { "<cmd>Telescope keymaps<CR>", "Keymaps" },
-        o = { "<cmd>Telescope oldfiles<CR>", "Oldfiles" },
-        m = { "<cmd>Telescope man_pages<CR>", "Man pages" },
-        c = { "<cmd>Telescope command_history<CR>", "Command history" },
+whichkey.add({
+    {
+        mode = { "n", "v" },
+
+        { "<leader>b", group = "buffer" },
+        { "<leader>bm", "<cmd>BufferLineCycleNext<CR>", desc = "Previous buffer" },
+        { "<leader>bn", "<cmd>BufferLineCycleNext<CR>", desc = "Next buffer" },
+        { "<leader>bp", "<cmd>BufferLinePick<CR>", desc = "Pick buffer" },
+
+        { "<leader>f", group = "find" },
+        { "<leader>fc", "<cmd>Telescope command_history<CR>", desc = "Command history" },
+        { "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "File names" },
+        { "<leader>fg", "<cmd>Telescope live_grep<CR>", desc = "Live grep" },
+        { "<leader>fk", "<cmd>Telescope keymaps<CR>", desc = "Keymaps" },
+        { "<leader>fm", "<cmd>Telescope man_pages<CR>", desc = "Man pages" },
+        { "<leader>fo", "<cmd>Telescope oldfiles<CR>", desc = "Oldfiles" },
+        { "<leader>fr", "<cmd>Telescope registers<CR>", desc = "Registers" },
+        { "<leader>fs", "<cmd>NvimTreeToggle<CR>", desc = "File system tree" },
+
+        { "<leader>l", group = "lsp" },
+        { "<leader>ld", "<cmd>Telescope diagnostics bufnr=0<CR>", desc = "Diagnostics" },
+        { "<leader>le", "<cmd>Telescope treesitter<CR>", desc = "Treesitter" },
+        { "<leader>lf", "<cmd>Telescope lsp_definitions<CR>", desc = "Definitions" },
+        { "<leader>lr", "<cmd>Telescope lsp_references<CR>", desc = "References" },
+        { "<leader>ls", "<cmd>Telescope lsp_document_symbols<CR>", desc = "Document symbols" },
+        { "<leader>lt", "<cmd>Telescope lsp_type_definitions<CR>", desc = "Type definitions" },
+        { "<leader>lw", "<cmd>Telescope lsp_workspace_symbols<CR>", desc = "Workspace symbols" },
+
+        { "<leader>n", group = "notify" },
+        { "<leader>nd",function() notify.dismiss() end, desc = "Dismiss notifications" },
+
+        { "<leader>o", group = "outline" },
+        { "<leader>ol", "<cmd>AerialToggle right<CR>", desc = "Outline" },
+
+        { "<leader>u", group = "undo" },
+        { "<leader>ud", "<cmd>UndotreeToggle<CR>", desc = "Undo tree" },
+        { "<leader>uf", "<cmd>Telescope undo<CR>", desc = "Find undo" },
     },
-    ["<leader>l"] = {
-        name = "+lsp",
-        s = { "<cmd>Telescope lsp_document_symbols<CR>", "Document symbols" },
-        w = { "<cmd>Telescope lsp_workspace_symbols<CR>", "Workspace symbols" },
-        f = { "<cmd>Telescope lsp_definitions<CR>", "Definitions" },
-        t = { "<cmd>Telescope lsp_type_definitions<CR>", "Type definitions" },
-        d = { "<cmd>Telescope diagnostics bufnr=0<CR>", "Diagnostics" },
-        r = { "<cmd>Telescope lsp_references<CR>", "References" },
-        e = { "<cmd>Telescope treesitter<CR>", "Treesitter" },
-    },
-    ["<leader>b"] = {
-        name = "+buffer",
-        p = { "<cmd>BufferLinePick<CR>", "Pick buffer" },
-        n = { "<cmd>BufferLineCycleNext<CR>", "Next buffer" },
-        m = { "<cmd>BufferLineCycleNext<CR>", "Previous buffer" },
-    },
-    ["<leader>u"] = {
-        name = "+undo",
-        d = { "<cmd>UndotreeToggle<CR>", "Undo tree" },
-        f = { "<cmd>Telescope undo<CR>", "Find undo" }
-    },
-    ["<leader>o"] = {
-        name = "+outline",
-        l = { "<cmd>AerialToggle right<CR>", "Outline" },
-    },
-    ["<leader>n"] = {
-        name = "+notify",
-        d = { function() notify.dismiss() end, "Dismiss notifications" },
-    }
 })

@@ -1,13 +1,17 @@
 return {
     "folke/which-key.nvim",
     event = "VeryLazy",
+    dependencies = {
+        "nvim-tree/nvim-web-devicons"
+    },
+
     opts = {
         plugins = {
             marks = true,
             registers = true,
             spelling = {
-                enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
-                suggestions = 20,
+                enabled = true,
+                suggestions = 10,
             },
             presets = {
                 operators = false,
@@ -19,25 +23,18 @@ return {
                 g = true, -- bindings for prefixed with g
             },
         },
-        -- add operators that will trigger motion and text object completion
-        -- to enable all native operators, set the preset / operators plugin above
         operators = { gc = "Comments" },
-        key_labels = {
-            -- override the label used to display some keys
-            ["<space>"] = "<spc>",
-        },
-        window = {
-            border = "single",
-            position = "bottom",
-            margin = { 1, 0, 1, 0 },
-            padding = { 0, 0, 0, 0 },
+        win = {
+            border = "rounded",
+            height = { min = 3, max = 5 },
+            padding = { 0, 0 },
         },
         layout = {
-            height = { min = 1, max = 6 },
-            width = { min = 20, max = 50 },
+            height = { min = 1, max = 5 },
+            -- width = { min = 20, max = 50 },
             spacing = 2,
-            align = "right",
+            align = "center",
         },
-        ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
+        show_help = false,
     }
 }
