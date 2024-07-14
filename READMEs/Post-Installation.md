@@ -100,7 +100,6 @@ $ chezmoi init
 ```
 
 ## Misc
-See [10 Things to Do After Installing Arch Linux (2023)](https://www.youtube.com/watch?v=V7ABBlXcn0g).
 ### Pacman
 Edit `/etc/pacman.conf`
 - Uncomment `Color`
@@ -111,3 +110,23 @@ See [Alternatives](https://wiki.archlinux.org/title/Core_utilities#Alternatives)
 | packages |
 |:-:|
 | `lsd` |
+
+### Modify linux console (tty)
+See [Linux console](https://wiki.archlinux.org/title/Linux_console)
+
+For colors, [catppuccin/tty](https://github.com/catppuccin/tty).
+```sh
+$ git clone https://github.com/catppuccin/tty
+$ ./tty/gnerate.sh mocha
+# modify /etc/default/grub
+    # add vt.default_red=... to GRUB_CMDLIEN_LINUX
+$ grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+For fonts, see [xxxserxxx/gotop](https://github.com/xxxserxxx/gotop/tree/master/fonts).
+```sh
+$ mv ~/Downloads/Lat15-VGA16-braille.psf /usr/share/kbd/consolefonts/
+# edit /etc/vconsole.conf
+    # add FONT=Lat15-VGA16-braille
+```
+Use [Braille ascii art](https://lachlanarthur.github.io/Braille-ASCII-Art) to generate.
