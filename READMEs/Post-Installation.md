@@ -130,3 +130,11 @@ $ mv ~/Downloads/Lat15-VGA16-braille.psf /usr/share/kbd/consolefonts/
     # add FONT=Lat15-VGA16-braille
 ```
 Use [Braille ascii art](https://lachlanarthur.github.io/Braille-ASCII-Art) to generate.
+
+### Grub UI
+See [GRUB/Tips and tricks](https://wiki.archlinux.org/title/GRUB/Tips_and_tricks).  
+Theme modified from [catppuccin](https://github.com/catppuccin/grub), [vinceliuice](https://github.com/vinceliuice/grub2-themes) and [sandesh236](https://github.com/sandesh236/sleek--themes)
+```sh
+$ pacman -S hwinfo  # to list supported resolution
+```
+
