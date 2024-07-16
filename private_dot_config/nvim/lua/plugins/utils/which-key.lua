@@ -17,21 +17,19 @@ return {
                 operators = false,
                 motions = false,
                 text_objects = true,
-                windows = false,
-                nav = false, -- misc bindings to work with windows
+                windows = true,
+                nav = true, -- misc bindings to work with windows
                 z = true, -- bindings for folds, spelling and others prefixed with z
                 g = true, -- bindings for prefixed with g
             },
         },
-        operators = { gc = "Comments" },
         win = {
             border = "rounded",
-            height = { min = 3, max = 5 },
+            height = { min = 3, max = 0.15 },
             padding = { 0, 0 },
         },
         layout = {
-            height = { min = 1, max = 5 },
-            -- width = { min = 20, max = 50 },
+            height = { min = 1, max = 0.15 },
             spacing = 2,
             align = "center",
         },

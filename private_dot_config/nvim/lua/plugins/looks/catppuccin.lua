@@ -44,6 +44,7 @@ return {
                 -- utils
                 aerial = true,
                 markdown = true,
+                mini = { enabled = true },
                 nvimtree = true,
                 treesitter = true,
                 telescope = { enabled = true },
