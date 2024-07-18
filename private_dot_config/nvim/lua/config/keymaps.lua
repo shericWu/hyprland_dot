@@ -1,16 +1,18 @@
 local whichkey = require("which-key")
 local notify = require("notify")
 
+vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>")
+
 whichkey.add({
     {
         mode = { "n", "v" },
 
-        { "<leader>b", group = "buffer" },
+        { "<leader>b", group = "Buffer" },
         { "<leader>bm", "<cmd>BufferLineCycleNext<CR>", desc = "Previous buffer" },
         { "<leader>bn", "<cmd>BufferLineCycleNext<CR>", desc = "Next buffer" },
         { "<leader>bp", "<cmd>BufferLinePick<CR>", desc = "Pick buffer" },
 
-        { "<leader>f", group = "find" },
+        { "<leader>f", group = "Find" },
         { "<leader>fc", "<cmd>Telescope command_history<CR>", desc = "Command history" },
         { "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "File names" },
         { "<leader>fg", "<cmd>Telescope live_grep<CR>", desc = "Live grep" },
@@ -20,7 +22,7 @@ whichkey.add({
         { "<leader>fr", "<cmd>Telescope registers<CR>", desc = "Registers" },
         { "<leader>fs", "<cmd>NvimTreeToggle<CR>", desc = "File system tree" },
 
-        { "<leader>l", group = "lsp" },
+        { "<leader>l", group = "Telescope lsp" },
         { "<leader>ld", "<cmd>Telescope diagnostics bufnr=0<CR>", desc = "Diagnostics" },
         { "<leader>le", "<cmd>Telescope treesitter<CR>", desc = "Treesitter" },
         { "<leader>lf", "<cmd>Telescope lsp_definitions<CR>", desc = "Definitions" },
@@ -29,14 +31,25 @@ whichkey.add({
         { "<leader>lt", "<cmd>Telescope lsp_type_definitions<CR>", desc = "Type definitions" },
         { "<leader>lw", "<cmd>Telescope lsp_workspace_symbols<CR>", desc = "Workspace symbols" },
 
-        { "<leader>n", group = "notify" },
-        { "<leader>nd",function() notify.dismiss() end, desc = "Dismiss notifications" },
+        { "<leader>n", group = "Notify" },
+        { "<leader>nd", function() notify.dismiss() end, desc = "Dismiss notifications" },
 
-        { "<leader>o", group = "outline" },
+        { "<leader>o", group = "Outline" },
         { "<leader>ol", "<cmd>AerialToggle right<CR>", desc = "Outline" },
 
-        { "<leader>u", group = "undo" },
+        { "<leader>u", group = "Undo" },
         { "<leader>ud", "<cmd>UndotreeToggle<CR>", desc = "Undo tree" },
         { "<leader>uf", "<cmd>Telescope undo<CR>", desc = "Find undo" },
+
+        { "<leader>d", group = "Lsp" },
+        { "<leader>da", "<cmd>Lspsaga code_action<CR>", desc = "Code action" },
+        { "<leader>df", "<cmd>Lspsaga peek_definition<CR>", desc = "Peek definition" },
+        { "<leader>dt", "<cmd>Lspsaga peek_type_definition<CR>", desc = "Peek type" },
+        { "<leader>dn", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Next diagnostic" },
+        { "<leader>dp", "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Previous diagnostic" },
+        { "<leader>ds", "<cmd>Lspsaga finder<CR>", desc = "Show reference" },
+        { "<leader>dk", "<cmd>Lspsaga hover_doc ++keep<CR>", desc = "Keep hover" },
+        { "<leader>do", "<cmd>Lspsaga outline<CR>", desc = "Outline" },
+        { "<leader>dr", "<cmd>Lspsaga rename<CR>", desc = "Rename" },
     },
 })

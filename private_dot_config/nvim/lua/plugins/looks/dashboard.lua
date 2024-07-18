@@ -38,7 +38,7 @@ return {
         ]]
         banner = "\n" .. banner .."\n\n"
 
-        require("dashboard").setup({
+        return {
             theme = "doom",
             hide = {
                 statusline = false,
@@ -65,6 +65,6 @@ return {
                     }
                 end
             },
-        })
+        }
     end
 }

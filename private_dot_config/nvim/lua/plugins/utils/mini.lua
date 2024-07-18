@@ -17,9 +17,9 @@ return {
             })
         end
     },
-    {
-        "echasnovski/mini.trailspace",
-        version = false,
-        opts = {}
-    }
+    -- {
+    --     "echasnovski/mini.trailspace",
+    --     version = false,
+    --     opts = {}
+    -- }
 }

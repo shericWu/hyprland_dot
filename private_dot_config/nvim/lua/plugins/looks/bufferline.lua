@@ -6,15 +6,14 @@ return {
         "catppuccin/nvim",
     },
 
-    config = function()
-        require("bufferline").setup({
-			highlights = require("catppuccin.groups.integrations.bufferline").get({
-				styles = {
-					"bold",
-				},
-			}),
-			options = {
-				separator_style = "slope",
+    opts = function ()
+        local highlight = require("catppuccin.groups.integrations.bufferline").get({
+            styles = { "bold" }
+        })
+        return {
+            highlights = highlight,
+            options = {
+                separator_style = "slope",
                 diagnostics = "nvim_lsp",
                 diagnostics_update_in_insert = false,
                 offsets = {
@@ -26,7 +25,7 @@ return {
                         separator = true,
                     }
                 },
-			},
-        })
-    end,
+            },
+        }
+    end
 }

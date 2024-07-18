@@ -40,6 +40,7 @@ return {
                         background = true,
                     },
                 },
+                cmp = true,
 
                 -- utils
                 aerial = true,

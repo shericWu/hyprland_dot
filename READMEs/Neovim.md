@@ -24,6 +24,8 @@ Note that `lazy.nvim` and `LazyVim` are different.
 ## Required system packages
 ```sh
 $ pacman -S tree-sitter-cli nodejs npm ripgrep fd make git-delta wget
+$ yay -S cppman
+$ cppman -c  && cppman -m  # cash and import to `man`
 ```
 
 ## lsp
