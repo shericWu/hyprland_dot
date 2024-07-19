@@ -27,23 +27,19 @@ return {
     {
         "neovim/nvim-lspconfig",
         dependencies = {
-            "p00f/clangd_extensions.nvim"
+            "p00f/clangd_extensions.nvim",
+            "ray-x/lsp_signature.nvim",
         },
 
         config = function()
-            local capabilities = require("cmp_nvim_lsp").default_capabilities()
-            local lspconfig = require("lspconfig")
-            local servers = {
-                "clangd",
-                "lua_ls"
-            }
-            for _, lsp in ipairs(servers) do
-                lspconfig[lsp].setup {
-                    capabilities = capabilities
-                }
-            end
             require("clangd_extensions.inlay_hints").setup_autocmd()
             require("clangd_extensions.inlay_hints").set_inlay_hints()
+            vim.api.nvim_create_autocmd("LspAttach", {
+                callback = function(args)
+                    local bufnr = args.buf
+                    require("lsp_signature").on_attach({}, bufnr)
+                end
+            })
 
             vim.diagnostic.config({
                 virtual_text = {
@@ -54,6 +50,15 @@ return {
                 underline = true,
                 update_in_insert = false,
             })
+
+            for _, diag in ipairs({ "Error", "Warn", "Info", "Hint" }) do
+                vim.fn.sign_define("DiagnosticSign" .. diag, {
+                    text = "",
+                    texthl = "DiagnosticSign" ..diag,
+                    linehl = "",
+                    numhl = "DiagnosticSign" .. diag,
+                })
+            end
         end
     },
     {
@@ -91,7 +96,7 @@ return {
                 }
             },
             hover = {
-                max_width = 0.6,
+                max_width = 0.8,
                 max_height = 0.5,
                 open_cmd = "!firefox"
             },
@@ -116,7 +121,22 @@ return {
         }
     },
     {
+        "ray-x/lsp_signature.nvim",
+        event = "VeryLazy",
+
+        opts = {
+            hint_prefix = {
+                above = "↙ ",
+                current = "← ",
+                below = "↖ "
+            },
+            floating_window = false,
+            timer_interval = 100,
+        }
+    },
+    {
         "p00f/clangd_extensions.nvim",
+
         opts = {}
-    }
+    },
 }
