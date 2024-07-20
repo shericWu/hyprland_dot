@@ -22,8 +22,8 @@ return {
         dependencies = {
             "neovim/nvim-lspconfig",
             "nvim-treesitter/nvim-treesitter",
-            "L3MON4D3/LuaSnip",
-            "windwp/nvim-autopairs",
+            "L3MON4D3/LuaSnip", "windwp/nvim-autopairs",
+            "kawre/neotab.nvim",
 
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-nvim-lsp-document-symbol",
@@ -52,6 +52,7 @@ return {
             local luasnip = require("luasnip")
             local lspkind = require("lspkind")
             local cmp_buffer = require("cmp_buffer")
+            local neotab = require("neotab")
             require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/LuaSnip/" })
 
             cmp.setup.cmdline({ "/", "?" }, {
@@ -76,7 +77,7 @@ return {
                     if vim.api.nvim_get_mode().mode == 'c' then
                         return true
                     else
-                        return not context.in_treesitter_capture("comment") 
+                        return not context.in_treesitter_capture("comment")
                             and not context.in_syntax_group("Comment")
                     end
                 end
@@ -132,20 +133,33 @@ return {
                     },
                 },
                 mapping = cmp.mapping.preset.insert({
-                    ["<CR>"] = cmp.mapping.confirm({ select = false, behavior = cmp.ConfirmBehaviorReplace }),
-                    ["<C-e>"] = cmp.mapping.abort(),
-                    ["<Tab>"] = cmp.mapping(function(fallback)
-                        if cmp.visible() then
-                            if #cmp.get_entries() == 1 then
-                                cmp.confirm({ select = true, behavior = cmp.ConfirmBehaviorReplace })
-                            end
-                            cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-                        elseif luasnip.expand_or_locally_jumpable() then
-                            luasnip.expand_or_jump()
-                        elseif luasnip.locally_jumpable(1) then
-                            luasnip.jump_next()
+                    -- ["<CR>"] = cmp.mapping.confirm({ select = false, behavior = cmp.ConfirmBehaviorReplace }),
+                    ["<CR>"] = cmp.mapping(function(fallback)
+                        if cmp.visible() and cmp.get_active_entry() then
+                            cmp.confirm({ select = false, behavior = cmp.ConfirmBehavior.Replace })
                         else
                             fallback()
+                        end
+                    end, { "i", "s", "c" }),
+                    ["<C-e>"] = cmp.mapping.abort(),
+                    ["<Tab>"] = cmp.mapping(function(fallback)
+                        if cmp.get_active_entry() then
+                            if cmp.visible() then
+                                if #cmp.get_entries() == 1 then
+                                    cmp.confirm({ select = true, behavior = cmp.ConfirmBehaviorReplace })
+                                end
+                                cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+                            elseif luasnip.expand_or_locally_jumpable() then
+                                luasnip.expand_or_jump()
+                            elseif luasnip.locally_jumpable(1) then
+                                luasnip.jump_next()
+                            else
+                                neotab.tabout()
+                            end
+                        elseif cmp.visible() and luasnip.expand_or_locally_jumpable() then
+                            luasnip.expand_or_jump()
+                        else
+                            neotab.tabout()
                         end
                     end, { "i", "s" }),
 

@@ -2,6 +2,7 @@ local whichkey = require("which-key")
 local notify = require("notify")
 
 vim.keymap.set({ "n", "v" }, "K", "<cmd>Lspsaga hover_doc<CR>", { desc = "Hover" })
+-- vim.api.nvim_set_keymap("i", "<A-z>", "<Plug>(Tabout)", { silent = true })
 
 whichkey.add({
     {
@@ -54,6 +55,7 @@ whichkey.add({
         { "<leader>dr", "<cmd>Lspsaga rename<CR>", desc = "Rename" },
 
         { "<leader>t", "<cmd>Lspsaga term_toggle<CR>", desc = "Toggle terminal" },
-        { "<leader>mm", function() require("conform").format({ lsp_fallback = true, async = true }) end, desc = "Format" }
+        { "<leader>mm", function() require("conform").format({ lsp_fallback = true, async = true }) end, desc = "Format" },
+
     },
 })
