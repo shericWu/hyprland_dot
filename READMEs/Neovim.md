@@ -1,11 +1,13 @@
-# Neovim
+# `Neovim`
+
 
 <!--toc:start-->
-- [Neovim](#neovim)
+- [`Neovim`](#neovim)
   - [lazy.nvim](#lazynvim)
   - [Required system packages](#required-system-packages)
-  - [lsp](#lsp)
+  - [`LSP`](#lsp)
   - [TODO](#todo)
+  - [Linter](#linter)
 <!--toc:end-->
 
 ## lazy.nvim
@@ -28,14 +30,19 @@ $ yay -S cppman
 $ cppman -c  && cppman -m  # cash and import to `man`
 ```
 
-## lsp
-| language | lsp |
+## `LSP`
+| language | LSP |
 |:-:|:-:|
 | c, c++ | clangd |
 | lua | lua-language-server |
 | markdown | markdown-oxide, marksman |
 
 ## TODO
-- lsp settings
+- LSP settings
 - nvim-cmp
-- dap (and telescope pluging)
+- DAP (and telescope plugins)
+
+## Linter
+- For `vale`, see [issue](https://github.com/mfussenegger/nvim-lint/issues/528).
+    - After installed via `Mason`, make sure `~/.config/vale/.vale.ini` exists.
+    - Run `~/.local/share/nvim/mason/packages/vale/vale --config=$HOME/.config/vale/.vale.ini sync`

@@ -1,7 +1,7 @@
 local whichkey = require("which-key")
 local notify = require("notify")
 
-vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>")
+vim.keymap.set({ "n", "v" }, "K", "<cmd>Lspsaga hover_doc<CR>", { desc = "Hover" })
 
 whichkey.add({
     {
@@ -41,15 +41,19 @@ whichkey.add({
         { "<leader>ud", "<cmd>UndotreeToggle<CR>", desc = "Undo tree" },
         { "<leader>uf", "<cmd>Telescope undo<CR>", desc = "Find undo" },
 
-        { "<leader>d", group = "Lsp" },
+        { "<leader>d", group = "LSP" },
         { "<leader>da", "<cmd>Lspsaga code_action<CR>", desc = "Code action" },
         { "<leader>df", "<cmd>Lspsaga peek_definition<CR>", desc = "Peek definition" },
         { "<leader>dt", "<cmd>Lspsaga peek_type_definition<CR>", desc = "Peek type" },
         { "<leader>dn", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Next diagnostic" },
         { "<leader>dp", "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Previous diagnostic" },
+        { "<leader>dd", "<cmd>Lspsaga show_buf_diagnostics ++normal<CR>", desc = "Show buffer diagnostic" },
         { "<leader>ds", "<cmd>Lspsaga finder<CR>", desc = "Show reference" },
         { "<leader>dk", "<cmd>Lspsaga hover_doc ++keep<CR>", desc = "Keep hover" },
         { "<leader>do", "<cmd>Lspsaga outline<CR>", desc = "Outline" },
         { "<leader>dr", "<cmd>Lspsaga rename<CR>", desc = "Rename" },
+
+        { "<leader>t", "<cmd>Lspsaga term_toggle<CR>", desc = "Toggle terminal" },
+        { "<leader>mm", function() require("conform").format({ lsp_fallback = true, async = true }) end, desc = "Format" }
     },
 })

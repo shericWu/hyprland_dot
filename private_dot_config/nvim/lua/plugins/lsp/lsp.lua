@@ -137,6 +137,26 @@ return {
     {
         "p00f/clangd_extensions.nvim",
 
-        opts = {}
+        opts = {
+            memory_usage = { border = "rounded" },
+            symbol_info = { border = "rounded" },
+            role_icons = {
+                type = "",
+                declaration = "",
+                expression = "",
+                specifier = "",
+                statement = "",
+                ["template argument"] = "",
+            },
+            kind_icons = {
+                Compound = "",
+                Recovery = "",
+                TranslationUnit = "",
+                PackExpansion = "",
+                TemplateTypeParm = "",
+                TemplateTemplateParm = "",
+                TemplateParamObject = "",
+            },
+        }
     },
 }
