@@ -40,6 +40,7 @@ return {
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
             local lspconfig = require("lspconfig")
             local servers = {
+                "bashls",
                 "clangd",
                 "lua_ls",
             }

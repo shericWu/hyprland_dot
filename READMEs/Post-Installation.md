@@ -137,4 +137,7 @@ Theme modified from [catppuccin](https://github.com/catppuccin/grub), [vinceliui
 ```sh
 $ pacman -S hwinfo  # to list supported resolution
 ```
-
+### Useful program
+| name | description |
+|:-:|:-:|
+| `plocate` | index file system and find files fast |
