@@ -24,6 +24,7 @@ return {
             "nvim-treesitter/nvim-treesitter",
             "L3MON4D3/LuaSnip", "windwp/nvim-autopairs",
             "kawre/neotab.nvim",
+            "folke/lazydev.nvim",
 
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-nvim-lsp-document-symbol",
@@ -35,7 +36,7 @@ return {
             "onsails/lspkind.nvim",
         },
 
-        opts = function()
+        opts = function(_, opts)
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
             local lspconfig = require("lspconfig")
             local servers = {
@@ -88,6 +89,12 @@ return {
                 "confirm_done",
                 cmp_autopairs.on_confirm_done()
             )
+            -- lazydev
+            opts.sources = opts.sources or {}
+            table.insert(opts.sources, {
+                name = "lazydev",
+                group_index = 0,
+            })
 
             return {
                 sources = cmp.config.sources({

@@ -5,6 +5,11 @@ return {
     lazy = false,
 
     config = function()
+        local sign = vim.fn.sign_define
+        sign("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = ""})
+        sign("DapBreakpointCondition", { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = ""})
+        sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = ""})
+
         require("catppuccin").setup({
             flavour = "mocha", -- latte, frappe, macchiato, mocha
             background = { -- :h background
@@ -41,6 +46,8 @@ return {
                     },
                 },
                 cmp = true,
+                dap = true,
+                dap_ui = true,
 
                 -- utils
                 aerial = true,
