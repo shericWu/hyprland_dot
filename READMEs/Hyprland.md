@@ -217,7 +217,6 @@ For some reason, the image from hyprpaper seems blurring, use [swww](https://git
 ```sh
 $ pacman -S swww
 # edit `hyprland.conf`
-
 ```
 
 ### flavours

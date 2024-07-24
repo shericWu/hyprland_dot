@@ -140,4 +140,6 @@ $ pacman -S hwinfo  # to list supported resolution
 ### Useful program
 | name | description |
 |:-:|:-:|
-| `plocate` | index file system and find files fast |
+| `plocate` | Index file system and find files fast |
+| `socat` | Interact with `Hyprland` socket |
+| `jq` | Parse .json file, useful with `hyprctl -j` |
