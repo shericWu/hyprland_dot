@@ -245,6 +245,9 @@ $ kitten themes --reload-in=all Catppuccin-Mocha
 ### GTK Theme
 ```sh
 $ pacman -S nwg-look
+$ yay -S orchis-theme nordic-theme
+$ git clone https://github.com/vinceliuice/Tela-icon-theme
+$ ./install.sh -a  # for tela icon
 ```
 
 ### Cava
@@ -253,4 +256,9 @@ $ yay -S cava
 $ cava  # to generate config at ~/.config/cava
 # change method to pipewire
 $ kitty +kitten pannel cava  # spawn cava at desktop
+```
+
+### AGS
+```sh
+$ yay -S aylurs-gtk-shell
 ```
