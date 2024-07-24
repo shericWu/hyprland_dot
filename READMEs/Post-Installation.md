@@ -143,3 +143,6 @@ $ pacman -S hwinfo  # to list supported resolution
 | `plocate` | Index file system and find files fast |
 | `socat` | Interact with `Hyprland` socket |
 | `jq` | Parse .json file, useful with `hyprctl -j` |
+| `$ pacman -S $(pacman -Sgq nerd-fonts)` | All the nerd fonts |
+| `noto-fonts-cjk` | Chinese, Japanese, Korean fonts |
+| `nwg-look` | Edit GTK3 settings on wayland |

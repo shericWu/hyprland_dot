@@ -200,6 +200,12 @@ $ pacman -S cliphist
 $ yay -S vesktop
 ```
 
+## Plugings
+```sh
+$ pacman -S cpio meson cmake hyprwayland-scanner
+$ hyprpm add https://github.com/hyprwm/hyprland-plugins
+```
+
 ## Looks
 ### Waybar
 See [Waybar](https://github.com/Alexays/Waybar).
@@ -234,4 +240,17 @@ $ cp ~/.config/kitty/current-theme.conf ~/.config/kitty/themes/Catppuccin-Mocha.
 $ kitty +kitten themes
 # choose `Catppuccin-Mocha` again
 $ kitten themes --reload-in=all Catppuccin-Mocha
+```
+
+### GTK Theme
+```sh
+$ pacman -S nwg-look
+```
+
+### Cava
+```sh
+$ yay -S cava
+$ cava  # to generate config at ~/.config/cava
+# change method to pipewire
+$ kitty +kitten pannel cava  # spawn cava at desktop
 ```
