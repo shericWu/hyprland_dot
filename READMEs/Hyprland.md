@@ -248,6 +248,9 @@ $ pacman -S nwg-look
 $ yay -S orchis-theme nordic-theme
 $ git clone https://github.com/vinceliuice/Tela-icon-theme
 $ ./install.sh -a  # for tela icon
+$ yay -S catppuccin-cursors-mocha
+# change gtk themes in nwg-look
+# for hyprcursor, set environment variables
 ```
 
 ### Cava
