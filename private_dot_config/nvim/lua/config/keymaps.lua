@@ -9,7 +9,7 @@ whichkey.add({
         mode = { "n", "v" },
 
         { "<leader>b", group = "Buffer" },
-        { "<leader>bm", "<cmd>BufferLineCycleNext<CR>", desc = "Previous buffer" },
+        { "<leader>bm", "<cmd>BufferLineCyclePrev<CR>", desc = "Previous buffer" },
         { "<leader>bn", "<cmd>BufferLineCycleNext<CR>", desc = "Next buffer" },
         { "<leader>bp", "<cmd>BufferLinePick<CR>", desc = "Pick buffer" },
 

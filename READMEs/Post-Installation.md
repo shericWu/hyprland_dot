@@ -146,3 +146,9 @@ $ pacman -S hwinfo  # to list supported resolution
 | `$ pacman -S $(pacman -Sgq nerd-fonts)` | All the nerd fonts |
 | `noto-fonts-cjk` | Chinese, Japanese, Korean fonts |
 | `nwg-look` | Edit GTK3 settings on wayland |
+| `bun` | Compiler for typescript |
+| `calcurse` | Calendar & scheduler |
+| `patroneo` | Music maker |
+| `ttyper` | Typing practice |
+| `qpwgraph` | PipeWire GUI |
+| `easyeffects` | PipeWire effects |

@@ -43,6 +43,8 @@ return {
                 "bashls",
                 "clangd",
                 "lua_ls",
+                "biome",
+                "tsserver",
             }
             for _, lsp in ipairs(servers) do
                 lspconfig[lsp].setup({

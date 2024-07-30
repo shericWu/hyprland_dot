@@ -58,9 +58,19 @@ $ swaync-client --reload-config
 ```
 
 ### Pipewire
+See [pipewire-guide](https://github.com/mikeroyal/PipeWire-Guide)
 ```sh
 $ pacman -S pipewire wireplumber pipewire-audio pipewire-alsa pipewire-pulse pipewire-jack
 $ reboot
+```
+
+### Bluetooth
+See [bluetooth](https://wiki.archlinux.org/title/Bluetooth)
+```sh
+$ pacman -S bluez bluez-utils blueman
+# `$ lsmod | grep -- 'btusb'` check if modules is loaded
+$ systemctl start bluetooth.service
+$ systemctl enable bluetooth.service
 ```
 
 ### XDG Desktop Portal
