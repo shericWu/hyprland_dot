@@ -75,7 +75,7 @@ $ systemctl enable bluetooth.service
 
 ### XDG Desktop Portal
 ```sh
-$ pacman -S xdg-desktop-portal-hyprland
+$ pacman -S xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal-wlr
 ```
 
 ### Authentication Agent
@@ -226,6 +226,7 @@ $ cp /etc/xdg/waybar/* ~/.config/waybar
 # replace `sway/workspaces` with `hyprland/workspaecs`
 $ sed -i 's/sway\/workspaces/hyprland\/workspaces/g' ~/.config/waybar/config.jsonc
 $ sed -i 's/sway\/workspaces/hyprland\/workspaces/g' ~/.config/waybar/style.css
+$ usermod --append --groups input sheric
 ```
 
 ### swww (current)

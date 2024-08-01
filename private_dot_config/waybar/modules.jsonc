@@ -1,18 +1,19 @@
 {
     "hyprland/workspaces": {
         "sort-by-number": true,
-        "on-click": "activate",
         "format": "{icon}",
         "format-icons": {
             "empty": " ",
             "default": " ",
             "urgent": " "
-        }  
+        },
+        "on-click": "activate"
     },
 
     "hyprland/workspaces#windows": {
         "sort-by-number": true,
-        "on-click": "activate",
+        "show-special": true,
+        "special-visible-only": false,
         "format": "{windows}",
         "window-rewrite-default": " ",
         "format-window-separator": "",
@@ -28,7 +29,8 @@
             "class<kitty>": " ",
             "class<kitty> title<.*nvim.*>": " ",
             "class<kitty> title<.*yazi.*>": " "
-        }
+        },
+        "on-click": "activate"
     },
 
     "wireplumber": {
@@ -54,7 +56,9 @@
         },
         "tooltip": true,
         "tooltip-format": "{desc}",
-        "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle"
+        "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
+        "on-scroll-up": "",
+        "on-scroll-down": ""
     },
 
     "battery": {
@@ -83,7 +87,9 @@
         "interval": 2,
         "format": "{icon}{percent}%",
         "format-icons": [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
-        "tooltip": false
+        "tooltip": false,
+        "on-scroll-up": "",
+        "on-scroll-down": ""
     },
     
     "idle_inhibitor": {
@@ -221,24 +227,24 @@
         "spacing": 8
     },
 
+    "cava": {
+        "cava_config": "~/.config/cava/config",
+        "hide_on_silence": false
+    },
+
     "hyprland/language": {
-        "format": "Lang: {}",
-        "format-en": "US",
-        "format-tr": "Korea",
-        "keyboard-name": "at-translated-set-2-keyboard",
-        "on-click": "hyprctl switchxkblayout $SET_KB next"
+        "format": "Lang: {}"
     },
 
     "keyboard-state": {
-        //"numlock": true,
         "capslock": true,
         "format": {
-            "numlock": "N {icon}",
-            "capslock":"󰪛 {icon}"
+            "numlock": "󰰒 {icon}",
+            "capslock":"󰯱 {icon}"
         }, 
         "format-icons": {
-            "locked": "",
-            "unlocked": ""
+            "locked": " ",
+            "unlocked": " "
         }
     },
 

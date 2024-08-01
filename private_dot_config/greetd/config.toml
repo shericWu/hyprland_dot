@@ -12,6 +12,3 @@ command = "tuigreet --issue --time --width 200 --theme greet=cyan --cmd Hyprland
 # on the greeter. A graphical greeter may for example require the user to be
 # in the `video` group.
 user = "greeter"
-
-[session]
-session-type = "self"

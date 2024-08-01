@@ -99,6 +99,13 @@ $ pacman -S chezmoi
 $ chezmoi init
 ```
 
+## Input method
+```sh
+$ pacman -S fcitx5 fcitx5-chewing fcitx5-kkc fcitx5-configtool
+$ yay -S fcitx5-mozc
+$ fcitx5-configtool  # open gui configuration
+```
+
 ## Misc
 ### Pacman
 Edit `/etc/pacman.conf`

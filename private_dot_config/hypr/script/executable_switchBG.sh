@@ -13,7 +13,7 @@ handle() {
                     else
                         TransitionType="right"
                     fi
-                    swww img --resize=no --transition-type="$TransitionType" --transition-step=4 --transition-duration=0.5 --transition-fps=60 "$HOME"/Pictures/bg/bg"$CurWS".png
+                    swww img --resize=no --transition-type="$TransitionType" --transition-step=4 --transition-duration=0.6 --transition-fps=60 "$HOME"/Pictures/bg/bg"$CurWS".png
                     PreWS=$CurWS
                 fi
             fi
