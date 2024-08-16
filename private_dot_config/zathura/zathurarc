@@ -1,0 +1,5 @@
+# include catppuccin-macchiato
+include catppuccin-mocha
+set selection-clipboard clipboard
+set synctex-editor-command "nvim --server /tmp/nvim --remote +%{line} %{input}"
+set synctex true

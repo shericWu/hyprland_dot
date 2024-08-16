@@ -46,3 +46,8 @@ $ cppman -c  && cppman -m  # cash and import to `man`
 - For `vale`, see [issue](https://github.com/mfussenegger/nvim-lint/issues/528).
     - After installed via `Mason`, make sure `~/.config/vale/.vale.ini` exists.
     - Run `~/.local/share/nvim/mason/packages/vale/vale --config=$HOME/.config/vale/.vale.ini sync`
+
+# Latex
+```sh
+$ pacman -S texlive
+```

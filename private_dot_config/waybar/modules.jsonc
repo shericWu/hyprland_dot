@@ -28,7 +28,8 @@
             "class<firefox> title<.*github.*>": " ",
             "class<kitty>": " ",
             "class<kitty> title<.*nvim.*>": " ",
-            "class<kitty> title<.*yazi.*>": " "
+            "class<kitty> title<.*yazi.*>": " ",
+            "class<.*zathura>": " "
         },
         "on-click": "activate"
     },

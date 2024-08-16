@@ -45,6 +45,7 @@ return {
                 "lua_ls",
                 "biome",
                 "tsserver",
+                "texlab",
             }
             for _, lsp in ipairs(servers) do
                 lspconfig[lsp].setup({

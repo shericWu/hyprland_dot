@@ -2,4 +2,5 @@
 require("config.options")
 require("config.lazy")
 require("config.filetype")
+require("config.autocmd")
 require("config.keymaps")
