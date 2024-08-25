@@ -10,7 +10,7 @@ $ nmcli device wifi connect <SSID> --ask
 
 ## Select the mirrors
 See [Mirrors](https://wiki.archlinux.org/title/Mirrors).  
-Get up-to-date some local mirrors.
+Get some up-to-date local mirrors.
 ```sh
 $ rankmirrors -n 0 -v /etc/pacman.d/mirrorlist-backup > /etc/pacman.d/mirrorlist
 $ pacman -Syyuu
@@ -47,7 +47,9 @@ See [User management](https://wiki.archlinux.org/title/Users_and_groups#User_man
 ```sh
 $ useradd -m -s <shell> <username>
 $ passwd <username>
-$ visudo  # enable "wheel" group and add "Defaults passwd_timeout=0"
+# enable "wheel" group and add "Defaults passwd_timeout=0"
+$ visudo /etc/sudoers.d/wheel
+$ visudo /etc/sudoers.d/timeout
 $ usermod -aG wheel <username>
 ```
 
@@ -81,6 +83,11 @@ $ git config --global user.email <email>
 $ git config --global core.editor <editor>
 $ git config --global init.defaultBranch main
 $ ssh-keygen -t
+```
+
+## Snapshot
+```sh
+$ pacman -S timeshift xorg-xhost
 ```
 
 ## Manage dot files
@@ -143,6 +150,7 @@ See [GRUB/Tips and tricks](https://wiki.archlinux.org/title/GRUB/Tips_and_tricks
 Theme modified from [catppuccin](https://github.com/catppuccin/grub), [vinceliuice](https://github.com/vinceliuice/grub2-themes) and [sandesh236](https://github.com/sandesh236/sleek--themes)
 ```sh
 $ pacman -S hwinfo  # to list supported resolution
+$ cp -r <path to theme> /usr/share/grub/themes
 ```
 ### Useful program
 | name | description |
@@ -159,3 +167,5 @@ $ pacman -S hwinfo  # to list supported resolution
 | `ttyper` | Typing practice |
 | `qpwgraph` | PipeWire GUI |
 | `easyeffects` | PipeWire effects |
+| `rsync` | Copy |
+| `thefuck` | Fat finger saver |

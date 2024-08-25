@@ -11,7 +11,6 @@ $ pacman -S hyprland kitty
     $ reboot
     $ pacman -S lib32-nvidia-utils libva-nvidia-driver libva-utils
     # edit /etc/default/grub
-        --add `nvidia_drm.modeset=1` to GRUB_CMDLINE_LINUX_DEFAULT-- # no more
         # [Notice: no "nvidia."]
         # add NVreg_PreserveVideoMemoryAllocations=1 to GRUB_CMDLINE_LINUX_DEFAULT
     $ grub-mkconfig -o /boot/grub/grub.cfg
@@ -105,7 +104,7 @@ $ pacman -S noto-fonts-cjk
     # edit /etc/environment
     # edit /etc/libva.conf
 ```
-- Note: If encounter Firefox crashed when playing video, remvoe `env = GBM_BACKEND,nvidia-drm` in `hyprland.conf`
+- Note: If encounter Firefox crashed when playing video, remove `env = GBM_BACKEND,nvidia-drm` in `hyprland.conf`
 
 ## Yay (aur helper)
 See [Yay](https://github.com/Jguer/yay).

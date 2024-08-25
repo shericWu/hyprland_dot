@@ -77,7 +77,7 @@ format = "[$symbol ]($style)"
 style = "bg:color_surface0 fg:color_subtext1"
 read_only_style = "bg:color_surface0 fg:color_subtext1"
 format = "[ $read_only]($read_only_style)[$path ]($style)"
-truncation_length = 3
+truncation_length = 4
 truncation_symbol = "…/"
 read_only = "󰉐 "
 
@@ -89,7 +89,7 @@ format = '[ $symbol$branch \(󰘿 $remote_branch\) ]($style)'
 
 [git_status]
 style = "bg:color_surface1 fg:color_text"
-format = "[$all_status $ahead_behind]($style)"
+format = "[$all_status$ahead_behind]($style)"
 conflicted = "[󱅜 $count](bg:color_surface1 fg:color_peach) "
 ahead = "[ $count](bg:color_surface1 fg:color_sapphire) "
 behind = "[ $count](bg:color_surface1 fg:color_maroon) "
