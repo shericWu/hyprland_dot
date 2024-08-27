@@ -106,6 +106,14 @@ $ pacman -S noto-fonts-cjk
 ```
 - Note: If encounter Firefox crashed when playing video, remove `env = GBM_BACKEND,nvidia-drm` in `hyprland.conf`
 
+### Tree Style Tab
+- Go to `about:config`
+    - Set `toolkit.legacyUserProfileCustomizations.stylesheets` to `true`
+- Go to `about:support`
+    - Open `Profile Directory`
+    - `$ mkdir chrome && cd chrome`
+    - `$ touch userChrome.css`
+
 ## Yay (aur helper)
 See [Yay](https://github.com/Jguer/yay).
 ```sh
@@ -259,6 +267,7 @@ $ yay -S orchis-theme nordic-theme
 $ git clone https://github.com/vinceliuice/Tela-icon-theme
 $ ./install.sh -a  # for tela icon
 $ yay -S catppuccin-cursors-mocha
+$ cp -r /usr/share/icons/catppuccin-mocha-dark-cursors ~/.local/share/icons
 # change gtk themes in nwg-look
 # for hyprcursor, set environment variables
 ```

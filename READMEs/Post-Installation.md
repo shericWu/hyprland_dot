@@ -169,3 +169,4 @@ $ cp -r <path to theme> /usr/share/grub/themes
 | `easyeffects` | PipeWire effects |
 | `rsync` | Copy |
 | `thefuck` | Fat finger saver |
+| `udisk2` | Mount file system |
