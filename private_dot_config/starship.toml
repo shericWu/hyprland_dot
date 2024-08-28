@@ -82,12 +82,15 @@ truncation_symbol = "…/"
 read_only = "󰉐 "
 
 [git_branch]
+disabled = false
 always_show_remote = true
 symbol = "󰊢 "
 style = "bg:color_surface1 fg:color_text"
 format = '[ $symbol$branch \(󰘿 $remote_branch\) ]($style)'
 
 [git_status]
+disabled = false
+ignore_submodules = true
 style = "bg:color_surface1 fg:color_text"
 format = "[$all_status$ahead_behind]($style)"
 conflicted = "[󱅜 $count](bg:color_surface1 fg:color_peach) "
@@ -95,7 +98,8 @@ ahead = "[ $count](bg:color_surface1 fg:color_sapphire) "
 behind = "[ $count](bg:color_surface1 fg:color_maroon) "
 diverged = "[󰦻 ](bg:color_surface1 fg:color_yellow) "
 up_to_date = ""
-untracked = "[ $count](bg:color_surface1 fg:color_pink) "
+# untracked = "[ $count](bg:color_surface1 fg:color_pink) "
+untracked = ""
 stashed = "[ $count](bg:color_surface1 fg:color_blue) "
 modified = "[ $count](bg:color_surface1 fg:color_yellow) "
 staged = "[󰄴 $count](bg:color_surface1 fg:color_blue) "
@@ -103,12 +107,13 @@ renamed = "[󰑕 $count](bg:color_surface1 fg:color_yellow) "
 deleted = "[󰆴 $count](bg:color_surface1 fg:color_red) "
 
 [git_metrics]
-disabled = false
+disabled = true
 added_style = "bg:color_surface1 fg:color_green"
 deleted_style = "bg:color_surface1 fg:color_red"
 format = '[ ](fg:color_surface1)[[+$added]($added_style)/[-$deleted]($deleted_style)](bg:color_surface1)[](fg:color_surface1)'
 
 [git_state]
+disabled = false
 style = "bg:color_surface1 fg:color_text"
 format = '[ ](fg:color_surface1)[\($state($progress_current of $progress_total)\)]($style)[](fg:color_surface1)'
 

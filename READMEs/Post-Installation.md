@@ -82,6 +82,7 @@ $ git config --global user.name <name>
 $ git config --global user.email <email>
 $ git config --global core.editor <editor>
 $ git config --global init.defaultBranch main
+$ git config --feature.manyFiles true
 $ ssh-keygen -t
 ```
 
