@@ -91,6 +91,15 @@ $ ssh-keygen -t
 $ pacman -S timeshift xorg-xhost
 ```
 
+## Power management
+```sh
+$ pacman -S tlp
+# edit /etc/tlp.conf
+    # USB_AUTOSUSPEND=0
+    # TLP_DEFAULT_MODE=BAT
+    # TLP_PERSISTENT_DEFAULT=1
+```
+
 ## Manage dot files
 See [Generating a new SSH key and adding it to the ssh-agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=linux)
 ### Github
