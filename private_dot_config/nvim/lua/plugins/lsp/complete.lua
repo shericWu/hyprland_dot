@@ -34,6 +34,7 @@ return {
             "hrsh7th/cmp-buffer",
             "ray-x/cmp-treesitter",
             "onsails/lspkind.nvim",
+            "micangl/cmp-vimtex",
         },
 
         opts = function(_, opts)
@@ -58,7 +59,7 @@ return {
             local lspkind = require("lspkind")
             local cmp_buffer = require("cmp_buffer")
             local neotab = require("neotab")
-            require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/LuaSnip/" })
+            require("luasnip.loaders.from_lua").load({ paths = {"~/.config/nvim/LuaSnip/"} })
 
             cmp.setup.cmdline({ "/", "?" }, {
                 mapping = cmp.mapping.preset.cmdline(),
@@ -103,6 +104,7 @@ return {
             return {
                 sources = cmp.config.sources({
                     { name = "luasnip" },
+                    { name = "vimtex" },
                     { name = "nvim_lsp" },
                     { name = "nvim_lsp_signature_help" },
                     { name = "treesitter" },

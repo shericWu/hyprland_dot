@@ -7,6 +7,17 @@ $ systemctl enable NetworkManager
 $ nmcli device wifi list
 $ nmcli device wifi connect <SSID> --ask
 ```
+### WPA2 Enterprise
+```sh
+$ pacman -S network-manager-applet nm-connection-editor iwd
+# create /etc/NetworkManager/conf.d/wifi_backend.conf
+    # [device]
+    # wifi.backend=iwd
+$ systemctl restart NetworkManager.service
+$ nm-applet --sm-disable &
+$ nm-connection-editor
+    # don't need domain
+```
 
 ## Select the mirrors
 See [Mirrors](https://wiki.archlinux.org/title/Mirrors).  

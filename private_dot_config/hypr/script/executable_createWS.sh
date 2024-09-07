@@ -17,6 +17,7 @@ handle() {
                         TransitionType="right"
                     fi
                     swww img --transition-type="$TransitionType" -o "$OutputName" --transition-step=4 --transition-duration=0.6 --transition-fps=60 "$BgName"
+                    matugen image "$BgName" -m "dark"
                     PreWS[OutputID]=$CurWS
                 fi
             fi

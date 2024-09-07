@@ -1,0 +1,90 @@
+* {
+    font-family: ComicShannsMono Nerd Font;
+    font-size: 14px;
+    color: {{colors.primary.default.rgba}};
+}
+
+window.topbar#waybar {
+    border: 0px;
+    background-color: transparent;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+button {
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+}
+
+button:hover {
+    background-color: rgba(80, 80, 80, 0.8);
+}
+
+#workspaces,
+#clock,
+#battery,
+#cpu,
+#temperature,
+#memory,
+#disk,
+#network,
+#bluetooth,
+#wireplumber,
+#pulseaudio,
+#pulseaudio-slider,
+#backlight,
+#backlight-slider,
+#keyboard-state,
+#language,
+#cava,
+#mpris,
+#idle_inhibitor,
+#tray,
+#custom-swaync {
+    background-color: {{colors.surface_container_low.default.rgba}};
+    border: 3px solid {{colors.primary_container.default.rgba}};
+    border-radius: 16px;
+    padding: 4px 10px 3px 10px;
+}
+
+#workspaces {
+    padding: 0px 10px 0px 10px;
+}
+
+#workspaces button {
+    padding: 0px 4px 0px 6px;
+}
+
+#workspaces button.active {
+    box-shadow: 0px 3px {{colors.primary_fixed_dim.default.rgba}};
+}
+
+#workspaces button.urgent {
+    background-color: rgba(243, 139, 168, 0.9);
+}
+
+#custom-swaync:hover,
+#idle_inhibitor:hover,
+#memory:hover,
+#network:hover,
+/*#bluetooth:hover,*/
+#pulseaudio:hover {
+    background-color: {{colors.inverse_primary.default.rgba}};
+}
+
+#backlight,
+#cpu {
+    border-right-width: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    padding-right: 5px;
+}
+
+#idle_inhibitor,
+#temperature {
+    border-left-width: 0px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    padding-left: 5px;
+}
