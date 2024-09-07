@@ -72,5 +72,4 @@ hyprctl dispatch workspace "$((1 + MIDDLE))"
 #########################
 BgName="$HOME/Pictures/bg/bg$(((MIDDLE+MONITOR_COUNT) / MONITOR_COUNT)).png"
 swww img "$BgName" --transition-type=center --transition-fps=60 --transition-duration=2
-matugen image "$BgName" -m "dark"
 socat -U - UNIX-CONNECT:"$XDG_RUNTIME_DIR"/hypr/"$HYPRLAND_INSTANCE_SIGNATURE"/.socket2.sock | while read -r line; do handle "$line"; done
