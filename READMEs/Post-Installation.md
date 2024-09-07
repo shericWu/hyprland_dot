@@ -180,3 +180,4 @@ $ cp -r <path to theme> /usr/share/grub/themes
 | `rsync` | Copy |
 | `thefuck` | Fat finger saver |
 | `udisk2` | Mount file system |
+| `ntfs-3g` | For ntfs support |
