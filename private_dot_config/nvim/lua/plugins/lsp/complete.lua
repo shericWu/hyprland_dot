@@ -44,8 +44,6 @@ return {
                 "bashls",
                 "clangd",
                 "lua_ls",
-                "biome",
-                "tsserver",
                 "texlab",
             }
             for _, lsp in ipairs(servers) do
