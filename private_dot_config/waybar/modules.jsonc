@@ -211,7 +211,8 @@
         "on-click-right": "swaync-client -d -sw",
         "escape": true,
         "return-type": "json",
-        "format": "{icon} {}",
+        // "format": "{icon} {}",
+        "format": "{icon} {0}",
         "format-icons": {
             "notification": " <span foreground='red'><sup></sup></span>",
             "none": " ",
