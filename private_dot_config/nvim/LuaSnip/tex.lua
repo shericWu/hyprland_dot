@@ -312,6 +312,34 @@ return {
 			}
 		)
 	),
+	s(
+		{ trig = "ama" },
+		fmta(
+			[[
+                \left[\begin{array}{<>}
+                    <>
+                \end{array}\right]
+            ]],
+			{
+				i(1),
+                i(2)
+			}
+		)
+	),
+	s(
+		{ trig = "casen" },
+		fmta(
+			[[
+                \begin{empheq}[left=\empheqlbrace]{alignat=<>}
+                    <>
+                \end{empheq}
+            ]],
+			{
+				i(1),
+                i(2)
+			}
+		)
+	),
 	-- [Arrows]
 	s(
 		{ trig = "rarrow" },
