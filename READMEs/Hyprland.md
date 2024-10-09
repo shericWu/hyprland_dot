@@ -280,6 +280,11 @@ $ cava  # to generate config at ~/.config/cava
 $ kitty +kitten pannel cava  # spawn cava at desktop
 ```
 
+### Music player
+```sh
+$ pacman -S quodlibet gst-libav gst-plugin-pipewire
+```
+
 ### AGS
 ```sh
 $ yay -S aylurs-gtk-shell
