@@ -192,3 +192,4 @@ $ cp -r <path to theme> /usr/share/grub/themes
 | `thefuck` | Fat finger saver |
 | `udisk2` | Mount file system |
 | `ntfs-3g` | For ntfs support |
+| `inetutils` | Network tools |
