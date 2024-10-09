@@ -32,8 +32,8 @@ return {
         },
 
         config = function()
-            require("clangd_extensions.inlay_hints").setup_autocmd()
-            require("clangd_extensions.inlay_hints").set_inlay_hints()
+            -- require("clangd_extensions.inlay_hints").setup_autocmd()
+            -- require("clangd_extensions.inlay_hints").set_inlay_hints()
             vim.api.nvim_create_autocmd("LspAttach", {
                 callback = function(args)
                     local bufnr = args.buf

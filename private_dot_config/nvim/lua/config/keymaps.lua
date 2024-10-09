@@ -42,6 +42,9 @@ whichkey.add({
         { "<leader>ud", "<cmd>UndotreeToggle<CR>", desc = "Undo tree" },
         { "<leader>uf", "<cmd>Telescope undo<CR>", desc = "Find undo" },
 
+        { "<leader>g", group = "Git" },
+        { "<leader>gp", "<cmd>Gitsigns preview_hunk_inline<CR>", desc = "Preview hunk" },
+
         { "<leader>l", group = "LSP" },
         { "<leader>la", "<cmd>Lspsaga code_action<CR>", desc = "Code action" },
         { "<leader>lf", "<cmd>Lspsaga peek_definition<CR>", desc = "Peek definition" },

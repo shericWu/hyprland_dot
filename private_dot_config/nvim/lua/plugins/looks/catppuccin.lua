@@ -51,6 +51,7 @@ return {
 
                 -- utils
                 aerial = true,
+                gitsigns = true,
                 markdown = true,
                 mini = { enabled = true },
                 nvimtree = true,
