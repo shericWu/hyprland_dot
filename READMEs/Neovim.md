@@ -1,6 +1,5 @@
 # `Neovim`
 
-
 <!--toc:start-->
 - [`Neovim`](#neovim)
   - [lazy.nvim](#lazynvim)
@@ -36,18 +35,27 @@ $ cppman -c  && cppman -m  # cash and import to `man`
 | c, c++ | clangd |
 | lua | lua-language-server |
 | markdown | markdown-oxide, marksman |
+| python | pyright |
 
-## TODO
-- LSP settings
-- nvim-cmp
-- DAP (and telescope plugins)
-
-## Linter
+## Linter (bad)
 - For `vale`, see [issue](https://github.com/mfussenegger/nvim-lint/issues/528).
     - After installed via `Mason`, make sure `~/.config/vale/.vale.ini` exists.
     - Run `~/.local/share/nvim/mason/packages/vale/vale --config=$HOME/.config/vale/.vale.ini sync`
 
-# Latex
+## Latex
 ```sh
 $ pacman -S texlive
+```
+## Python
+- packages
+```sh
+$ pacman -S opencl-clover-mesa opencl-nvidia ocl-icd clinfo python-pyopencl cuda python-pycuda python-pytorch-opt-cuda python-torchvision-cuda
+$ pacman -S python-pip python-pipx python-virtualenv
+```
+- create venv
+```sh
+$ virtualenv --system-site-packages ./path/to/venv
+$ source ./path/to/venv/bin/activate
+# do something in venv
+$ deactivate
 ```
