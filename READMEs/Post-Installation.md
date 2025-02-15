@@ -99,7 +99,8 @@ $ ssh-keygen -t
 
 ## Snapshot
 ```sh
-$ pacman -S timeshift xorg-xhost
+$ pacman -S timeshift xorg-xhost cronie
+$ systemctl enable cronie.service
 ```
 
 ## Power management
@@ -193,3 +194,6 @@ $ cp -r <path to theme> /usr/share/grub/themes
 | `udisk2` | Mount file system |
 | `ntfs-3g` | For ntfs support |
 | `inetutils` | Network tools |
+| `perf`, `strace`, `valgrind` | debug/performance |
+| `openvpn` | vpn |
+| `cronie` | for timeshift backup |
