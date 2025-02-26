@@ -24,7 +24,7 @@ return {
             "nvim-treesitter/nvim-treesitter",
             "L3MON4D3/LuaSnip", "windwp/nvim-autopairs",
             "kawre/neotab.nvim",
-            "folke/lazydev.nvim",
+            -- "folke/lazydev.nvim",
 
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-nvim-lsp-document-symbol",
@@ -45,6 +45,7 @@ return {
                 "clangd",
                 "lua_ls",
                 "texlab",
+                "superhtml",
             }
             for _, lsp in ipairs(servers) do
                 lspconfig[lsp].setup({
@@ -84,22 +85,7 @@ return {
                         return not context.in_treesitter_capture("comment")
                             and not context.in_syntax_group("Comment")
                     end
-                end
-            })
-            -- Auto pair '()'
-            local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-            cmp.event:on(
-                "confirm_done",
-                cmp_autopairs.on_confirm_done()
-            )
-            -- lazydev
-            opts.sources = opts.sources or {}
-            table.insert(opts.sources, {
-                name = "lazydev",
-                group_index = 0,
-            })
-
-            return {
+                end,
                 sources = cmp.config.sources({
                     { name = "luasnip" },
                     { name = "vimtex" },
@@ -109,6 +95,30 @@ return {
                 }, {
                     { name = "buffer", option = { keyword_pattern = [[\k\+]] } },
                 }),
+            })
+            -- Auto pair '()'
+            local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+            cmp.event:on(
+                "confirm_done",
+                cmp_autopairs.on_confirm_done()
+            )
+            -- lazydev
+            -- opts.sources = opts.sources or {}
+            -- table.insert(opts.sources, {
+            --     name = "lazydev",
+            --     group_index = 0,
+            -- })
+
+            return {
+                -- sources = cmp.config.sources({
+                --     { name = "luasnip" },
+                --     { name = "vimtex" },
+                --     { name = "nvim_lsp" },
+                --     { name = "nvim_lsp_signature_help" },
+                --     { name = "treesitter" },
+                -- }, {
+                --     { name = "buffer", option = { keyword_pattern = [[\k\+]] } },
+                -- }),
                 window = {
                     completion = cmp.config.window.bordered(),
                     documentation = cmp.config.window.bordered(),

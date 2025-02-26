@@ -5,6 +5,7 @@ return {
         dependencies = {
             { "Bilal2453/luvit-meta", lazy = true },
         },
+        enable = false,
 
         opts = {
             library = {
