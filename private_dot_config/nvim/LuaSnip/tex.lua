@@ -194,6 +194,39 @@ return {
 		)
 	),
 	s(
+		{ trig = "prob" },
+		fmta(
+			[[
+                \mathbb{P}\left(<>\right)
+            ]],
+			{
+				i(1),
+			}
+		)
+	),
+	s(
+		{ trig = "ev" },
+		fmta(
+			[[
+                \mathbb{E}\left[<>\right]
+            ]],
+			{
+				i(1),
+			}
+		)
+	),
+	s(
+		{ trig = "leri" },
+		fmta(
+			[[
+                \left(<>\right)
+            ]],
+			{
+				i(1),
+			}
+		)
+	),
+	s(
 		{ trig = "min" },
 		fmta(
 			[[
