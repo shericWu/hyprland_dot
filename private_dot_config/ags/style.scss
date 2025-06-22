@@ -1,0 +1,182 @@
+@use "sass:color";
+
+$bg: transparent;
+$widget_bg: rgba(0, 0, 0, 0.65);
+$fg: #cdd6f4;
+$accent: #89b4fa;
+$radius: 1em;
+$shadow: 0em -0.15em 0em 0em inset;
+
+$widget_padding: 1.5em;
+$widget_radius: 0em 0em 8em 8em;
+$widget_bottom: 0.15em solid;
+
+window.Bar {
+  border: none;
+  box-shadow: none;
+  background-color: $bg;
+  color: $fg;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: 0em 0em $radius $radius;
+
+  label {
+    margin: 0em 0.1em 0em 0.1em;
+    transition-duration: 600ms;
+    background-color: transparent;
+  }
+
+  box {
+    transition-duration: 400ms;
+    transition-timing-function: linear;
+    background-color: transparent;
+  }
+  
+  button {
+    background-color: transparent;
+  }
+
+  .Workspaces  {
+    background-color: $widget_bg;
+    padding-left: $widget_padding;
+    padding-right: $widget_padding;
+    border-radius: $widget_radius;
+    border-bottom: $widget_bottom;
+    font-size: 1em;
+
+    button {
+      all: unset;
+      margin: 0em 0.2em 0em 0.2em;
+      padding: 0em;
+    }
+
+    .BarWSFocused {
+      box-shadow: 0em 0.15em 0em 0em inset;
+      padding: 0.15em 0em 0em 0em;
+    }
+
+    .BarWSBoxSingle {
+      margin: 0.2em 0em 0.2em 0em;
+      padding: 0em 0em 0em 0.65em;
+      border: 0.1em solid;
+      border-radius: $radius;
+      min-width: 1.7em;
+    }
+
+    .BarWSBoxMulti {
+      margin: 0.2em 0em 0.2em 0em;
+      padding: 0em 0.5em 0em 0.65em;
+      border: 0.1em solid;
+      border-radius: $radius;
+    }
+
+    .BarWSBox {
+      margin: 0.5em 0em 0.5em 0em;
+      border: 0.15em solid;
+      border-radius: $radius;
+      min-width: 1em;
+    }
+
+    .BarClientFocused {
+      color: $accent;
+    }
+  }
+
+  .Focused {
+    padding-left: $widget_padding;
+    padding-right: $widget_padding;
+    border-radius: 0;
+    border-bottom: $widget_bottom;
+    // box-shadow: $shadow;
+    background-color: $widget_bg;
+  }
+
+  .Time {
+    color: $fg;
+    background-color: $widget_bg;
+    padding-left: $widget_padding;
+    padding-right: $widget_padding;
+    border-radius: 0 0 8em 0;
+    border-bottom: $widget_bottom;
+  }
+
+  .Wifi {
+    background-color: $widget_bg;
+    padding-left: $widget_padding;
+    padding-right: $widget_padding;
+    border-radius: 0 0 0 8em;
+    border-bottom: $widget_bottom;
+  }
+
+  .Media .Cover {
+    min-height: 1.2em;
+    min-width: 1.2em;
+    border-radius: $radius;
+    background-position: center;
+    background-size: contain;
+  }
+
+  .Battery label {
+    padding-left: 0;
+    margin-left: 0;
+    background-color: $widget_bg;
+    padding-left: $widget_padding;
+    padding-right: $widget_padding;
+    border-radius: $widget_radius;
+    border-bottom: $widget_bottom;
+  }
+
+  .AudioSlider {
+    * {
+      all: unset;
+    }
+
+    icon {
+      margin-right: 0em;
+    }
+
+    & {
+      background-color: $widget_bg;
+      padding-left: $widget_padding;
+      padding-right: $widget_padding;
+      border-radius: 0;
+      border-bottom: $widget_bottom;
+    }
+
+    .VolumeBox {
+    }
+    
+    trough {
+      background-color: color.adjust($fg, $alpha: -0.6);
+      min-height: .8em;
+      border-radius: $radius;
+    }
+
+    highlight {
+      background-color: $accent;
+      min-height: 0.8em;
+      border-radius: $radius 0em 0em $radius;
+    }
+
+    slider {
+      background-color: $fg;
+      border-radius: $radius;
+      min-height: 0.8em;
+      min-width: 0em;
+      margin: -0.2em;
+    }
+  }
+
+  .SysTray {
+    margin-right: 0em;
+    background-color: $widget_bg;
+    padding-left: $widget_padding;
+    padding-right: $widget_padding;
+    border-radius: 0;
+    border-bottom: $widget_bottom;
+
+    button {
+      padding: 0 0.3em;
+    }
+  }
+}

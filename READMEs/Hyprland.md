@@ -224,7 +224,7 @@ $ hyprpm add https://github.com/hyprwm/hyprland-plugins
 ```
 
 ## Looks
-### Waybar
+### Waybar (deprecated)
 See [Waybar](https://github.com/Alexays/Waybar).
 ```sh
 $ pacman -S waybar
@@ -234,6 +234,13 @@ $ cp /etc/xdg/waybar/* ~/.config/waybar
 $ sed -i 's/sway\/workspaces/hyprland\/workspaces/g' ~/.config/waybar/config.jsonc
 $ sed -i 's/sway\/workspaces/hyprland\/workspaces/g' ~/.config/waybar/style.css
 $ usermod --append --groups input sheric
+```
+### Ags (Replacement of waybar)
+```sh
+$ yay -S aylurs-gtk-shell-git libastal-io-git libastal-git
+$ ags init  # create ~/.config/ags/
+$ ags bundle ./app.ts ./bar.js  # in ~/.config/ags/
+$ gjs -m ./bar.js
 ```
 
 ### swww (current)

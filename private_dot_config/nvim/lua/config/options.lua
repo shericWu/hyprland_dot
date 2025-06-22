@@ -41,6 +41,10 @@ vim.opt.timeoutlen = 200  -- set the window for key pressed
 vim.opt.clipboard = "unnamedplus"  -- use register '+' for system clipboard
 vim.opt.mouse = "a"
 
+vim.opt.title = true
+vim.opt.titlelen = 0
+vim.opt.titlestring = "nvim: %F %y"
+
 -- for nvim-tree
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
