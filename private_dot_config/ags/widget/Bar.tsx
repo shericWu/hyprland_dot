@@ -1,8 +1,7 @@
-import { App } from "astal/gtk3"
-import GObject from "gi://GObject"
 import { Variable, GLib, bind } from "astal"
-import { exec } from "astal/process"
-import { Widget, Astal, Gtk, Gdk, astalify, type ConstructProps } from "astal/gtk3"
+import { exec, execAsync } from "astal/process"
+import { readFile, monitorFile } from "astal/file"
+import { Astal, Gtk, Gdk } from "astal/gtk3"
 import Hyprland from "gi://AstalHyprland"
 import Mpris from "gi://AstalMpris"
 import Battery from "gi://AstalBattery"
@@ -10,22 +9,32 @@ import Wp from "gi://AstalWp"
 import Network from "gi://AstalNetwork"
 import Tray from "gi://AstalTray"
 
+function NullWidget() {
+    return <label visible={false} />
+}
+
+function send_error(err: string) {
+    exec(["fyi", "-a", "AGS Bar", "-u", "critical", "AGS Bar Error", `${err}`])
+}
+
 function Swaync() {
     function checkSwaync() {
         try {
-            const out = exec(["bash", "-c", "which swaync-client"])
+            exec(["bash", "-c", "which swaync-client"])
             return 0
         } catch (err) {
-            console.log("[error] check swaync exists", err)
-            return 1
+            console.log("[Error] check swaync exists", err)
+            send_error(`Which swaync-client error: ${err}`)
         }
+        return 1
     }
 
     function togglePanel() {
         try {
-            const out = exec(["swaync-client", "-t"])
+            exec(["swaync-client", "-t"])
         } catch(err) {
-            console.log("[error] toggle swaync panel", err)
+            console.log("[Error] toggle swaync panel", err)
+            send_error(`swaync-client -t error: ${err}`)
         }
     }
 
@@ -35,15 +44,15 @@ function Swaync() {
                 return "  "
             const parsed = JSON.parse(output)
             const icon = (parsed.dnd === true)? " " : " "
-            return `${icon} ${parsed.count}`
+            return `${icon}${parsed.count}`
         } catch(err) {
-            console.log("[error] get label of swaync", err)
+            console.log("[Error] get label of swaync", err)
             return "  "
         }
     }
 
     if (checkSwaync() !== 0)
-        return null
+        return NullWidget()
     
     const swaync = Variable<string>("").watch(
         ["swaync-client", "-s"],
@@ -52,10 +61,9 @@ function Swaync() {
         }
     )
     
-    return <button
-        onClicked={() => togglePanel()}
-        onDestroy={() => swaync.drop()}
-    >
+    return <button className="Swaync"
+                   onClicked={() => togglePanel()}
+                   onDestroy={() => swaync.drop()}>
         <label label={swaync().as(out => getLabel(out))} />
     </button>
 }
@@ -69,13 +77,13 @@ function SysTray() {
             <label label="󰍜 " />
         </button>
         <box visible={bind(visible).as(Boolean)}>
-            <Swaync />
             {bind(tray, "items").as(items => items.map(item => (
                 <menubutton
                     tooltipMarkup={bind(item, "tooltipMarkup")}
                     usePopover={false}
                     actionGroup={bind(item, "actionGroup").as(ag => ["dbusmenu", ag])}
-                    menuModel={bind(item, "menuModel")}>
+                    menuModel={bind(item, "menuModel")}
+                >
                     <icon gicon={bind(item, "gicon")} />
                 </menubutton>
             )))}
@@ -83,16 +91,93 @@ function SysTray() {
     </box>
 }
 
-function SmallTray() {
+function Brightness() {
+    const brightness_path = "/sys/class/backlight/amdgpu_bl2/brightness"
+    const max_brightness_path = "/sys/class/backlight/amdgpu_bl2/max_brightness"
+    function checkFile(path: string) {
+        try {
+            exec(["bash", "-c", `test -f ${path}`])
+            return 0
+        } catch(err) {
+            console.log(`[Error] ${path} DNE`, err)
+            send_error(`Check ${path} exists error: ${err}`)
+        }
+        return 1
+    }
+
+    function getBrightness(path: string) {
+        try {
+            let b = readFile(path)
+            return Number(b)
+        } catch (err) {
+            console.log(`[error] Cannot read ${path}`)
+        }
+        return -1
+    }
+
+    function handleSwitch(on: boolean) {
+        function disable_idle() {
+            execAsync(["bash", "-e", "/home/sheric/.config/hypr/script/bar-idle-inhibitor.sh"])
+                .catch(err => {
+                    console.log("[Error] Bad disable idle", err)
+                    send_error(`Disable idle error: ${err}`)
+                })
+            return 0
+        }
+
+        function enable_idle() {
+            try {
+                exec(["pkill", "-f", 'bar-idle-inhibitor'])
+                return 0
+            } catch(err) {
+                console.log("[Error] Bad enable idle")
+                send_error(`Enable idle error: ${err}`)
+            }
+            return 1
+        }
+
+        if (on)
+            return disable_idle()
+        else
+            return enable_idle()
+    }
+
+    if (checkFile(brightness_path) !== 0 || checkFile(max_brightness_path) !== 0)
+        return NullWidget()
+
+    const brightness = Variable(getBrightness(brightness_path))
+    const max_brightness = getBrightness(max_brightness_path)
+
+    try {
+        monitorFile(
+            `${brightness_path}`,
+            (_, event) => {
+                /* Event code: 0 [File changed], 1 [Changes done] */
+                if (event === 1) {
+                    brightness.set(getBrightness(brightness_path))
+                }
+            }
+        )
+    } catch (err) {
+        console.log("[error] monitor brightness")
+    }
+
+    const on = Variable(false);
     
-    return <box>
+    return <box className="Brightness">
+        <label label={
+            bind(brightness).as(b => ` ${(100 * b / max_brightness).toFixed(0)}%`)
+        } />
         <button onClicked={() => {
-            visible.set(!visible.get())
-            console.log(visible.get())
-        }}>
-            <label label=" " />
+            on.set(!on.get())
+            if (handleSwitch(on.get()) !== 0) {
+                on.set(!on.get())
+            }
+        }} >
+            <label label={bind(on).as(on =>
+                (on)? "  " : "  "
+            )} />
         </button>
-        <SysTray visible={false} />
     </box>
 }
 
@@ -102,9 +187,7 @@ function Wifi() {
 
     return <box visible={wifi.as(Boolean)} className="Wifi">
         {wifi.as(wifi => wifi && (
-            <icon
-                icon={bind(wifi, "iconName")}
-            />
+            <icon icon={bind(wifi, "iconName")} />
         ))}
         {wifi.as(wifi => wifi && (
             <label label={bind(wifi, "ssid").as(ssid => ` ${ssid}`)} />
@@ -122,24 +205,24 @@ function AudioSlider() {
 
     return <box className="AudioSlider">
         <button onClicked={() => speaker.set_mute(!speaker.get_mute())}>
-                <icon icon={bind(speaker, "volumeIcon")} />
+            <icon icon={bind(speaker, "volumeIcon")} />
         </button>
         <stack visibleChildName={visibleChild()}>
             <button name="stackPercent" onClicked={() => visibleChild.set("stackSlider")}>
-                <label label={bind(speaker, "volume").as(volume => `${Math.round(100 * volume).toFixed(0)}%`)} />
+                <label label={bind(speaker, "volume").as(volume => ` ${Math.round(100 * volume).toFixed(0)}%`)} />
             </button>
-            <box name="stackSlider" className="VolumeBox"
-                marginLeft={visibleChild().as(name => (name === "stackSlider")? 8 : 0)}
-                marginRight={visibleChild().as(name => (name === "stackSlider")? 8 : 0)}
+            <box name="stackSlider"
+                 className="VolumeBox"
+                 marginLeft={visibleChild().as(name => (name === "stackSlider")? 8 : 0)}
+                 marginRight={visibleChild().as(name => (name === "stackSlider")? 8 : 0)}
             >
                 <button onClicked={() => visibleChild.set("stackPercent")}>
-                    <label 
-                        label={bind(speaker, "volume").as(volume => `${Math.round(100 * volume).toFixed(0)}% `)} />
+                    <label label={bind(speaker, "volume").as(volume => `${Math.round(100 * volume).toFixed(0)}% `)} />
                 </button>
                 <slider className="VolumeSlider"
-                    widthRequest={visibleChild().as(name => (name === "stackSlider")? 100 : 0)}
-                    onDragged={({ value }) => speaker.volume = value}
-                    value={bind(speaker, "volume")}
+                        widthRequest={visibleChild().as(name => (name === "stackSlider")? 100 : 0)}
+                        onDragged={({ value }) => speaker.volume = value}
+                        value={bind(speaker, "volume")}
                 />
             </box>
         </stack>
@@ -153,11 +236,12 @@ function BatteryLevel() {
         visible={bind(bat, "isPresent")}>
         <icon icon={bind(bat, "batteryIconName")} />
         <label label={bind(bat, "percentage").as(p =>
-            `${Math.floor(p * 100)} %`
+            ` ${Math.floor(p * 100)}%`
         )} />
     </box>
 }
 
+/*
 function Media() {
     const mpris = Mpris.get_default()
 
@@ -182,6 +266,7 @@ function Media() {
         ))}
     </box>
 }
+*/
 
 function Workspaces({ monitor }: { monitor: Gdk.Monitor}) {
     const default_icon = " "
@@ -273,11 +358,16 @@ function Workspaces({ monitor }: { monitor: Gdk.Monitor}) {
 
     return <box className="Workspaces">
         {bind(hypr, "workspaces").as(wss => wss
-            // .filter(ws => !(ws.id >= -99 && ws.id <= -2))  // filter out special workspaces
             .filter(ws => (
                 ws.get_monitor().get_x() === monitor.get_geometry().x && ws.get_monitor().get_y() === monitor.get_geometry().y
-            ))  // filter out workspaces on the other monitors
-            .sort((a, b) => a.id - b.id)
+            ))
+            .sort((a, b) => {
+                if (a.name === 'special:magic-1' || b.name === 'speical:magic-2')
+                    return 1
+                if (a.name === 'special:magic-2' || b.name === 'special:magic-1')
+                    return -1
+                return a.id - b.id
+            })
             .map(ws => handleWorkspace(ws))
         )}
     </box>
@@ -338,7 +428,9 @@ export default function Bar(monitor: Gdk.Monitor) {
             <box halign={Gtk.Align.END} >
                 <Wifi />
                 <BatteryLevel />
+                <Brightness />
                 <AudioSlider />
+                <Swaync />
                 <SysTray />
             </box>
         </centerbox>

@@ -1,39 +1,37 @@
 @use "sass:color";
 
-$bg: transparent;
-$widget_bg: rgba(0, 0, 0, 0.65);
+$widget_bg: rgba(0, 0, 0, 0.7);
 $fg: #cdd6f4;
 $accent: #89b4fa;
 $radius: 1em;
-$shadow: 0em -0.15em 0em 0em inset;
+$shadow: 0 -0.15em 0 0 inset;
 
-$widget_padding: 1.5em;
-$widget_radius: 0em 0em 8em 8em;
+$widget_padding: 0.8em;
+$widget_padding_end: 1.5em;
+$widget_radius: 0 0 8em 8em;
 $widget_bottom: 0.15em solid;
 
+* {
+  all: unset;
+}
+
 window.Bar {
-  border: none;
-  box-shadow: none;
-  background-color: $bg;
-  color: $fg;
   font-size: 1em;
   font-weight: bold;
-  border-radius: 0em 0em $radius $radius;
+  color: $fg;
+  background-color: transparent;
+  border: none;
+  border-radius: 0 0 $radius $radius;
+  box-shadow: none;
 
   label {
-    margin: 0em 0.1em 0em 0.1em;
+    margin: 0 0.1em 0 0.1em;
     transition-duration: 600ms;
-    background-color: transparent;
   }
 
   box {
     transition-duration: 400ms;
     transition-timing-function: linear;
-    background-color: transparent;
-  }
-  
-  button {
-    background-color: transparent;
   }
 
   .Workspaces  {
@@ -41,37 +39,35 @@ window.Bar {
     padding-left: $widget_padding;
     padding-right: $widget_padding;
     border-radius: $widget_radius;
-    border-bottom: $widget_bottom;
-    font-size: 1em;
+    border-bottom: $widget_bottom $fg;
 
     button {
-      all: unset;
-      margin: 0em 0.2em 0em 0.2em;
-      padding: 0em;
+      margin: 0 0.2em 0 0.2em;
+      padding: 0;
     }
 
     .BarWSFocused {
-      box-shadow: 0em 0.15em 0em 0em inset;
-      padding: 0.15em 0em 0em 0em;
+      box-shadow: 0 0.15em 0 0 inset;
+      padding: 0.15em 0 0 0;
     }
 
     .BarWSBoxSingle {
-      margin: 0.2em 0em 0.2em 0em;
-      padding: 0em 0em 0em 0.65em;
+      margin: 0.2em 0 0.2em 0;
+      padding: 0 0 0 0.65em;
       border: 0.1em solid;
       border-radius: $radius;
       min-width: 1.7em;
     }
 
     .BarWSBoxMulti {
-      margin: 0.2em 0em 0.2em 0em;
-      padding: 0em 0.5em 0em 0.65em;
+      margin: 0.2em 0 0.2em 0;
+      padding: 0 0.5em 0 0.65em;
       border: 0.1em solid;
       border-radius: $radius;
     }
 
     .BarWSBox {
-      margin: 0.5em 0em 0.5em 0em;
+      margin: 0.5em 0 0.5em 0;
       border: 0.15em solid;
       border-radius: $radius;
       min-width: 1em;
@@ -83,71 +79,55 @@ window.Bar {
   }
 
   .Focused {
+    font-weight: normal;
+    background-color: $widget_bg;
     padding-left: $widget_padding;
     padding-right: $widget_padding;
-    border-radius: 0;
     border-bottom: $widget_bottom;
-    // box-shadow: $shadow;
-    background-color: $widget_bg;
+    border-radius: 0;
   }
 
   .Time {
-    color: $fg;
     background-color: $widget_bg;
     padding-left: $widget_padding;
-    padding-right: $widget_padding;
+    padding-right: $widget_padding_end;
     border-radius: 0 0 8em 0;
     border-bottom: $widget_bottom;
   }
 
   .Wifi {
     background-color: $widget_bg;
-    padding-left: $widget_padding;
+    padding-left: $widget_padding_end;
     padding-right: $widget_padding;
     border-radius: 0 0 0 8em;
     border-bottom: $widget_bottom;
   }
 
-  .Media .Cover {
-    min-height: 1.2em;
-    min-width: 1.2em;
-    border-radius: $radius;
-    background-position: center;
-    background-size: contain;
-  }
-
-  .Battery label {
-    padding-left: 0;
-    margin-left: 0;
+  .Battery {
     background-color: $widget_bg;
     padding-left: $widget_padding;
     padding-right: $widget_padding;
-    border-radius: $widget_radius;
+    border-radius: 0;
+    border-bottom: $widget_bottom;
+  }
+  
+  .Brightness {
+    background-color: $widget_bg;
+    padding-left: $widget_padding;
+    padding-right: $widget_padding;
+    border-radius: 0;
     border-bottom: $widget_bottom;
   }
 
   .AudioSlider {
-    * {
-      all: unset;
-    }
-
-    icon {
-      margin-right: 0em;
-    }
-
-    & {
-      background-color: $widget_bg;
-      padding-left: $widget_padding;
-      padding-right: $widget_padding;
-      border-radius: 0;
-      border-bottom: $widget_bottom;
-    }
-
-    .VolumeBox {
-    }
+    background-color: $widget_bg;
+    padding-left: $widget_padding;
+    padding-right: $widget_padding;
+    border-radius: 0;
+    border-bottom: $widget_bottom;
     
     trough {
-      background-color: color.adjust($fg, $alpha: -0.6);
+      background-color: #585b70;
       min-height: .8em;
       border-radius: $radius;
     }
@@ -155,23 +135,31 @@ window.Bar {
     highlight {
       background-color: $accent;
       min-height: 0.8em;
-      border-radius: $radius 0em 0em $radius;
+      border-radius: $radius 0 0 $radius;
     }
 
     slider {
       background-color: $fg;
       border-radius: $radius;
       min-height: 0.8em;
-      min-width: 0em;
+      min-width: 0;
       margin: -0.2em;
     }
   }
-
-  .SysTray {
-    margin-right: 0em;
+  
+  .Swaync {
     background-color: $widget_bg;
     padding-left: $widget_padding;
     padding-right: $widget_padding;
+    border-radius: 0;
+    border-bottom: $widget_bottom;
+  }
+
+  .SysTray {
+    background-color: $widget_bg;
+    margin-right: 0;
+    padding-left: $widget_padding;
+    padding-right: 0;
     border-radius: 0;
     border-bottom: $widget_bottom;
 

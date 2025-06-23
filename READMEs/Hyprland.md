@@ -118,8 +118,7 @@ $ pacman -S noto-fonts-cjk
 See [Yay](https://github.com/Jguer/yay).
 ```sh
 $ pacman -S git base-devel
-$ mkdir Programs
-$ cd Programs
+$ mkdir Programs $ cd Programs
 $ git clone https://aur.archlinux.org/yay.git
 $ cd yay
 $ makepkg -si
@@ -237,11 +236,16 @@ $ usermod --append --groups input sheric
 ```
 ### Ags (Replacement of waybar)
 ```sh
+$ pacman -S fyi
 $ yay -S aylurs-gtk-shell-git libastal-io-git libastal-git
 $ ags init  # create ~/.config/ags/
 $ ags bundle ./app.ts ./bar.js  # in ~/.config/ags/
 $ gjs -m ./bar.js
 ```
+If css looks wierd
+- `$ nwg-look`
+- Choose Theme: `Orchis-Dark-Compact`
+    - Icon Theme: `Tela-dark`
 
 ### swww (current)
 For some reason, the image from hyprpaper seems blurring, use [swww](https://github.com/LGFae/swww) instead.
