@@ -14,7 +14,7 @@ framerate = 60
 # 'autosens' will attempt to decrease sensitivity if the bars peak. 1 = on, 0 = off
 # new as of 0.6.0 autosens of low values (dynamic range)
 # 'overshoot' allows bars to overshoot (in % of terminal height) without initiating autosens. DEPRECATED as of 0.6.0
-; autosens = 1
+autosens = 0
 ; overshoot = 20
 
 # Manual sensitivity in %. If autosens is enabled, this will only be the initial value.
@@ -264,7 +264,8 @@ waves = 0
 # the raw visualization is very noisy, this factor adjusts the integral and gravity filters to keep the signal smooth
 # 100 will be very slow and smooth, 0 will be fast but noisy.
 ; noise_reduction = 50
-noise_reduction = 23
+; noise_reduction = 23
+noise_reduction = 12
 
 
 [eq]
@@ -276,9 +277,9 @@ noise_reduction = 23
 2 = 2
 3 = 1.5 # midtone
 4 = 1
-5 = 1 # treble
-6 = 1
-7 = 1
-8 = 1
+5 = 2 # treble
+6 = 1.5
+7 = 1.5
+8 = 1.5
 9 = 1
 10 = 1

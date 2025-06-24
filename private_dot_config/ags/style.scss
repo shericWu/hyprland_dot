@@ -40,6 +40,7 @@ window.Bar {
     padding-right: $widget_padding;
     border-radius: $widget_radius;
     border-bottom: $widget_bottom $fg;
+    min-height: 2em;
 
     button {
       margin: 0 0.2em 0 0.2em;
