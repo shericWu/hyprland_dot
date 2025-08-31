@@ -16,6 +16,13 @@ return {
                 dark = "mocha",
             },
             transparent_background = true, -- disables setting the background color.
+            float = {
+                transparent = true,
+                solid = false,
+            },
+            dim_inactive = {
+                enabled = false,
+            },
             custom_highlights = function(mocha)
                 return {
                     DashboardHeader = { fg = mocha.text },
