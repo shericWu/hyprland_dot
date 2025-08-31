@@ -30,7 +30,7 @@
 }
 {
     "label" : "shutdown",
-    "action" : "systemctl poweroff",
+    "action" : "systemctl poweroff -i",
     "text" : "",
     "keybind" : "d"
 }
