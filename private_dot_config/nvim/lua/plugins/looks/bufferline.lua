@@ -7,7 +7,7 @@ return {
     },
 
     opts = function ()
-        local highlight = require("catppuccin.groups.integrations.bufferline").get({
+        local highlight = require("catppuccin.groups.integrations.bufferline").get_theme({
             styles = { "bold" }
         })
         return {
