@@ -122,7 +122,8 @@ return {
     },
     {
         "ray-x/lsp_signature.nvim",
-        event = "VeryLazy",
+        -- event = "VeryLazy",
+        event = "InsertEnter",
 
         opts = {
             hint_prefix = {
