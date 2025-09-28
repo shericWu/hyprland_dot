@@ -1,5 +1,6 @@
 return {
     "akinsho/bufferline.nvim",
+    after = "catppuccin",
     version = "*",
     dependencies = {
         "nvim-tree/nvim-web-devicons",
@@ -7,7 +8,7 @@ return {
     },
 
     opts = function ()
-        local highlight = require("catppuccin.groups.integrations.bufferline").get_theme({
+        local highlight = require("catppuccin.special.bufferline").get_theme({
             styles = { "bold" }
         })
         return {
