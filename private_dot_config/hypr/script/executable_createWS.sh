@@ -3,13 +3,13 @@
 handle() {
     case $1 in
         workspacev2*)
-            echo "line: $line"
+            # echo "line: $line"
             if [[ "$line" =~ ^workspacev2\>\>([[:digit:]]+),.*$ ]]; then
                 CurWS="${BASH_REMATCH[1]}"
                 BgName="$HOME/Pictures/bg/bg$(((CurWS+MONITOR_COUNT-1) / MONITOR_COUNT)).png"
                 OutputID=$(((CurWS-1) % MONITOR_COUNT))
                 OutputName=${MONITOR[$OutputID]}
-                echo "current workspace: $CurWS, background name: $BgName"
+                # echo "current workspace: $CurWS, background name: $BgName"
                 if [[ "$CurWS" -ne "${PreWS[$OutputID]}" ]] && [[ -f "$BgName" ]]; then
                     if [[ "$CurWS" -lt "${PreWS[$OutputID]}" ]]; then
                         TransitionType="left"
@@ -24,6 +24,8 @@ handle() {
             ;;
     esac
 }
+
+kill "$(pgrep --full 'bash /home/sheric/.config/hypr/script/createWS.sh' | grep -v ^$$\$)"
 
 MONITOR_NAME=$(hyprctl monitors -j | jq '.[].name')
 MONITOR_COUNT=$(wc --lines <<< "$MONITOR_NAME")
@@ -50,7 +52,7 @@ do
     done
 done
 
-echo "$WSRULES $WSCREATE"
+# echo "$WSRULES $WSCREATE"
 hyprctl --batch "$WSRULES$WSCREATE"
 
 PreWS=()
@@ -58,7 +60,7 @@ MIDDLE=$((((HYPRLAND_WSCOUNT+1) / 2 - 1) * MONITOR_COUNT))
 for (( m=0; m<MONITOR_COUNT; m++ ));
 do
     PreWS[m]="$((m + MIDDLE + 1))"
-    echo "hyprctl dispatch workspace ${PreWS[$m]}"
+    # echo "hyprctl dispatch workspace ${PreWS[$m]}"
     hyprctl dispatch workspace "${PreWS[$m]}"
     sleep 0.1
     hyprctl dispatch workspace "$((m+1))"
