@@ -47,10 +47,16 @@ return {
                 "texlab",
                 "superhtml",
             }
-            for _, lsp in ipairs(servers) do
-                lspconfig[lsp].setup({
+            -- for _, lsp in ipairs(servers) do
+            --     lspconfig[lsp].setup({
+            --         capabilities = capabilities,
+            --     })
+            -- end
+            for _, server in ipairs(servers) do
+                vim.lsp.config(server, {
                     capabilities = capabilities,
                 })
+                vim.lsp.enable(server)
             end
 
             local cmp = require("cmp")

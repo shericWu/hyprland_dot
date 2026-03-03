@@ -12,7 +12,10 @@ return {
                 -- map <esc> to exit telescope instead of going normal mode
                 defaults = {
                     mappings = {
-                        i = { ["<esc>"] = actions.close }
+                        i = {
+                            -- ["<esc>"] = actions.close,
+                            ["<C-h>"] = "which_key",
+                        },
                     }
                 }
             })

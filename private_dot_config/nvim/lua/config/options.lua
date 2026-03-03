@@ -45,6 +45,8 @@ vim.opt.title = true
 vim.opt.titlelen = 0
 vim.opt.titlestring = "nvim: %F %y"
 
+vim.opt.winborder = "rounded"
+
 -- for nvim-tree
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
