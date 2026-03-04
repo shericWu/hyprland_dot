@@ -3,3 +3,4 @@ alias swwwimg='swww img -t any --transition-step=4 --transition-duration=2 --tra
 alias opdf='zathura --fork -c ~/.config/zathura.normal'
 alias mpv-multi='~/.config/hypr/script/mpv-multi.sh'
 alias gdb-attach='sudo -E capsh --caps="cap_setpcap,cap_setuid,cap_setgid+ep cap_sys_ptrace+eip" --keep=1 --user="$USER" --addamb="cap_sys_ptrace" --shell=/usr/bin/gdb -- -p'
+alias start-pyenv='source ~/.config/hypr/script/start-pyenv.sh'
