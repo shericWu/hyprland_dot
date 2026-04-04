@@ -32,6 +32,10 @@ whichkey.add({
         { "<leader>ts", "<cmd>Telescope lsp_document_symbols<CR>", desc = "Document symbols" },
         { "<leader>tt", "<cmd>Telescope lsp_type_definitions<CR>", desc = "Type definitions" },
         { "<leader>tw", "<cmd>Telescope lsp_workspace_symbols<CR>", desc = "Workspace symbols" },
+        {'<leader>tcd', "<cmd>Telescope cscope definitions<CR>", desc = 'Cscope Definitions' },
+        {'<leader>tcr', "<cmd>Telescope cscope references<CR>", desc = 'Cscope References' },
+        {'<leader>tct', "<cmd>Telescope cscope calling_this_function<CR>", desc = 'Cscope calls to' },
+        {'<leader>tcb', "<cmd>Telescope cscope called_by_this_function<CR>", desc = 'Cscope called by' },
 
         { "<leader>n", group = "Notify" },
         { "<leader>nd", function() notify.dismiss() end, desc = "Dismiss notifications" },

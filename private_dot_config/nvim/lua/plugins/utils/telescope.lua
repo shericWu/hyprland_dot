@@ -63,4 +63,22 @@ return {
             require("telescope").load_extension("undo")
         end
     },
+    {
+        'sgruszka/cscope-picker',
+        dependencies = {
+            'nvim-telescope/telescope.nvim',
+        },
+        config = function()
+            require('telescope').load_extension('cscope')
+        end
+    },
+    {
+        'fcying/telescope-ctags-outline.nvim',
+        dependencies = {
+            'nvim-telescope/telescope.nvim',
+        },
+        config = function()
+            require('telescope').load_extension('ctags_outline')
+        end
+    }
 }
