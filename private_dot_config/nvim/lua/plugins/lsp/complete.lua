@@ -45,7 +45,8 @@ return {
                 "clangd",
                 "lua_ls",
                 "texlab",
-                "superhtml",
+                "pyrefly"
+                -- "superhtml",
             }
             -- for _, lsp in ipairs(servers) do
             --     lspconfig[lsp].setup({
