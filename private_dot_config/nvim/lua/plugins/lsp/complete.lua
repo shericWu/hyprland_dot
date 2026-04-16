@@ -21,7 +21,7 @@ return {
         version = false,
         dependencies = {
             "neovim/nvim-lspconfig",
-            "nvim-treesitter/nvim-treesitter",
+            -- "nvim-treesitter/nvim-treesitter",
             "L3MON4D3/LuaSnip", "windwp/nvim-autopairs",
             "kawre/neotab.nvim",
             -- "folke/lazydev.nvim",
