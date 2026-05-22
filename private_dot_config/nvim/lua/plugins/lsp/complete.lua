@@ -45,7 +45,8 @@ return {
                 "clangd",
                 "lua_ls",
                 "texlab",
-                "pyrefly"
+                "pyrefly",
+                "rust-analyzer"
                 -- "superhtml",
             }
             -- for _, lsp in ipairs(servers) do
