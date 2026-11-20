@@ -78,6 +78,7 @@ plugins=(
     cp
     fzf
     git
+    history-substring-search
     kitty
     per-directory-history
     ssh
@@ -88,7 +89,6 @@ plugins=(
     zsh-autosuggestions
     zsh-syntax-highlighting
     zoxide
-    history-substring-search
 )
 
 source $ZSH/oh-my-zsh.sh
