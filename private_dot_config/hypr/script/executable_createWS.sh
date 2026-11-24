@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+# Updated for Hyprland 0.57 (Lua config):
+#   - `hyprctl keyword workspace ...` no longer exists -> rules are added with `hyprctl eval 'hl.workspace_rule{...}'`
+#   - `hyprctl dispatch workspace N` -> `hyprctl dispatch 'hl.dsp.focus({ workspace = "N" })'`
+# The socket2 path and the `workspacev2>>ID,NAME` event format are unchanged for numbered workspaces.
 
 handle() {
     case $1 in
@@ -25,6 +29,10 @@ handle() {
     esac
 }
 
+focus_ws() {
+    hyprctl dispatch "hl.dsp.focus({ workspace = \"$1\" })" > /dev/null
+}
+
 kill "$(pgrep --full 'bash /home/sheric/.config/hypr/script/createWS.sh' | grep -v ^$$\$)"
 
 MONITOR_NAME=$(hyprctl monitors -j | jq '.[].name')
@@ -38,36 +46,46 @@ do
     MONITOR[m]="${oldName:1:-1}"
 done
 
+# Build one Lua chunk with all the rules, then one eval (replaces the old `--batch` of keywords)
 WSRULES=""
-WSCREATE=""
 HYPRLAND_WSCOUNT=9
 for (( m=0; m<MONITOR_COUNT; m++ ));
 do
     id=$((m + 1))
     for (( i=1; i<=HYPRLAND_WSCOUNT; i++ ));
     do
-        WSRULES+="keyword workspace $id,persistent:true,monitor:${MONITOR[$m]}; "
-        WSCREATE+="dispatch workspace $id; "
+        WSRULES+="hl.workspace_rule({ workspace = \"$id\", persistent = true, monitor = \"${MONITOR[$m]}\" })"$'\n'
         id=$((id + MONITOR_COUNT))
     done
 done
 
-# echo "$WSRULES $WSCREATE"
-hyprctl --batch "$WSRULES$WSCREATE"
+# echo "$WSRULES"
+hyprctl eval "$WSRULES" > /dev/null
+
+# Persistent rules only spawn workspaces once they're visited, like the old `dispatch workspace` loop did
+for (( m=0; m<MONITOR_COUNT; m++ ));
+do
+    id=$((m + 1))
+    for (( i=1; i<=HYPRLAND_WSCOUNT; i++ ));
+    do
+        focus_ws "$id"
+        id=$((id + MONITOR_COUNT))
+    done
+done
 
 PreWS=()
 MIDDLE=$((((HYPRLAND_WSCOUNT+1) / 2 - 1) * MONITOR_COUNT))
 for (( m=0; m<MONITOR_COUNT; m++ ));
 do
     PreWS[m]="$((m + MIDDLE + 1))"
-    # echo "hyprctl dispatch workspace ${PreWS[$m]}"
-    hyprctl dispatch workspace "${PreWS[$m]}"
+    # echo "focus workspace ${PreWS[$m]}"
+    focus_ws "${PreWS[$m]}"
     sleep 0.1
-    hyprctl dispatch workspace "$((m+1))"
-    hyprctl dispatch workspace "${PreWS[$m]}"
+    focus_ws "$((m+1))"
+    focus_ws "${PreWS[$m]}"
 done
 
-hyprctl dispatch workspace "$((1 + MIDDLE))"
+focus_ws "$((1 + MIDDLE))"
 
 #########################
 ### Switch Background ###
