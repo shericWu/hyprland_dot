@@ -8,15 +8,19 @@ return {
             vim.g.vimtex_view_general_viewer = "zathura"
             -- vim.g.vimtex_view_general_options = '-x "nvr --remote +%{line} ${input}" --synctex-forward @line:@col:@tex'
             vim.g.vimtex_view_general_options_latexmk = "-reuse-instance"
-            -- vim.g.vimtex_compiler_latexmk = {
-            --     executable = 'latexmk',
-            --     options = {
-            --         '-xelatex',  -- Specifies the use of XeLaTeX
-            --         '-file-line-error',
-            --         '-synctex=1',
-            --         '-interaction=nonstopmode',
-            --     },
-            -- }
+            vim.g.vimtex_compiler_method = "latexmk"
+            vim.g.vimtex_compiler_latexmk = {
+                -- executable = 'latexmk',
+                options = {
+                    '-pdf',
+                    '-shell-escape',
+                    '-file-line-error',
+                    '-synctex=1',
+                    '-interaction=nonstopmode',
+                },
+            }
+            vim.g.vimtex_syntax_enabled = 1
+            vim.g.vimtex_quickfix_mode = 2
             return {}
         end
     }
