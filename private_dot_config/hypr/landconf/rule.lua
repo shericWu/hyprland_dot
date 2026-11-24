@@ -9,6 +9,7 @@ hl.window_rule({ match = { class = ".*" }, suppress_event = "maximize" }) -- You
 hl.window_rule({ match = { class = "(kitty)" }, opacity = "0.85 override" })
 hl.window_rule({ match = { class = "(foot)" },  opacity = "0.85 override" })
 hl.window_rule({ match = { title = "(cava)" },  opacity = "0.3 override" })
+hl.window_rule({ match = { class = "(osu!)" },  fullscreen = true, monitor = 1 })
 
 -- Windows on special workspaces: floating, centered, 75% of the monitor
 hl.window_rule({
